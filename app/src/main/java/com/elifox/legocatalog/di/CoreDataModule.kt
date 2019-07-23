@@ -1,6 +1,7 @@
 package com.elifox.legocatalog.di
 
 import com.elifox.legocatalog.BuildConfig
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,11 +17,13 @@ class CoreDataModule {
 
     //@Provides
     fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
-        OkHttpClient.Builder().addInterceptor(interceptor).build()
+            OkHttpClient.Builder().addInterceptor(interceptor)
+                    .addNetworkInterceptor(StethoInterceptor())
+                    .build()
 
     //@Provides
     fun provideLoggingInterceptor() =
-        HttpLoggingInterceptor().apply { level = if (BuildConfig.DEBUG) BODY else NONE }
+            HttpLoggingInterceptor().apply { level = if (BuildConfig.DEBUG) BODY else NONE }
 
     //@Provides
     //@Singleton
@@ -29,5 +32,5 @@ class CoreDataModule {
     //@Provides
     //@Singleton
     fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory =
-        GsonConverterFactory.create(gson)
+            GsonConverterFactory.create(gson)
 }

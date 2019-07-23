@@ -32,6 +32,7 @@ buildscript {
         gsonVersion = '2.8.2'
         okhttp = '3.10.0'
         retrofit = '2.6.0'
+        stetho = '1.5.1'
     }
 
     repositories {

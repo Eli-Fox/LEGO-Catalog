@@ -17,6 +17,7 @@
 package com.elifox.legocatalog
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 
 // TODO Dagger2
 //class App : Application(), HasActivityInjector {
@@ -26,6 +27,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        if (BuildConfig.DEBUG) Stetho.initializeWithDefaults(this)
 
         // TODO Timber logging
         //if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
