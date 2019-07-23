@@ -17,6 +17,8 @@ android {
         versionCode 1
         versionName "1"
         vectorDrawables.useSupportLibrary true
+
+        buildConfigField 'String', 'API_DEVELOPER_TOKEN', "\"${api_developer_token}\""
     }
     buildTypes {
         release {
@@ -51,10 +53,16 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
-    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+
+    // Networking
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp"
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"

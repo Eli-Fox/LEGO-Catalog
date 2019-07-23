@@ -15,7 +15,6 @@ buildscript {
         fragmentVersion = '1.1.0-alpha09'
         glideVersion = '4.9.0'
         gradleVersion = '3.4.2'
-        gsonVersion = '2.8.2'
         junitVersion = '4.12'
         kotlinVersion = '1.3.41'
         ktlintVersion = '0.30.0'
@@ -30,6 +29,9 @@ buildscript {
         testExtJunit = '1.1.0'
         uiAutomatorVersion = '2.2.0'
         workVersion = '2.1.0'
+        gsonVersion = '2.8.2'
+        okhttp = '3.10.0'
+        retrofit = '2.6.0'
     }
 
     repositories {

@@ -16,7 +16,11 @@ import com.elifox.legocatalog.workers.SeedDatabaseWorker
 /**
  * The Room database for this app
  */
-@Database(entities = [GardenPlanting::class, LegoSet::class, Plant::class], version = 1, exportSchema = false)
+@Database(entities = [LegoTheme::class,
+                      LegoSet::class,
+                      GardenPlanting::class,
+                      Plant::class],
+        version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gardenPlantingDao(): GardenPlantingDao

@@ -1,0 +1,32 @@
+package com.elifox.legocatalog.api
+
+import com.elifox.legocatalog.data.LegoSet
+import com.elifox.legocatalog.data.LegoTheme
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
+
+/**
+ * Lego REST API access points
+ */
+interface LegoService {
+
+    companion object {
+        const val ENDPOINT = "https://rebrickable.com/api/v3/"
+    }
+
+    @GET("lego/themes/")
+    suspend fun getThemes(@Query("page") page: Int? = null,
+                  @Query("page_size") pageSize: Int? = null,
+                  @Query("ordering") order: String? = null): ResultsResponse<LegoTheme>
+
+    @GET("lego/sets/")
+    suspend fun getSets(@Query("page") page: Int? = null,
+                  @Query("page_size") pageSize: Int? = null,
+                  @Query("ordering") order: String? = null): ResultsResponse<LegoSet>
+
+    @GET("lego/sets/{id}/")
+    suspend fun getSet(@Path("id") id: String): LegoSet
+
+
+}
