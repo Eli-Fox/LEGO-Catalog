@@ -2,7 +2,7 @@
 
 package com.elifox.legocatalog.data
 
-import com.elifox.legocatalog.data.Plant
+import com.elifox.legocatalog.garden.data.Plant
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

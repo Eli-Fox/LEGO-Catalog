@@ -6,9 +6,10 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import com.elifox.legocatalog.data.AppDatabase
-import com.elifox.legocatalog.data.LegoSetRepository
-import com.elifox.legocatalog.utilities.getValue
-import com.elifox.legocatalog.utilities.testPlant
+import com.elifox.legocatalog.legoset.data.LegoSetRepository
+import com.elifox.legocatalog.legoset.ui.PlantDetailViewModel
+import com.elifox.legocatalog.util.getValue
+import com.elifox.legocatalog.util.testPlant
 import org.junit.After
 import org.junit.Assert.assertFalse
 import org.junit.Before

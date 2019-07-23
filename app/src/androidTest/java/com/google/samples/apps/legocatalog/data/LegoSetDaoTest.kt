@@ -6,7 +6,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.elifox.legocatalog.utilities.getValue
+import com.elifox.legocatalog.garden.data.Plant
+import com.elifox.legocatalog.legoset.data.LegoSetDao
+import com.elifox.legocatalog.util.getValue
 import org.hamcrest.Matchers.equalTo
 import org.junit.After
 import org.junit.Assert.assertThat

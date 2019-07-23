@@ -8,7 +8,7 @@
             type="android.view.View.OnClickListener"/>
         <variable
             name="viewModel"
-            type="com.elifox.legocatalog.viewmodels.PlantAndGardenPlantingsViewModel"/>
+            type="com.elifox.legocatalog.garden.ui.PlantAndGardenPlantingsViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

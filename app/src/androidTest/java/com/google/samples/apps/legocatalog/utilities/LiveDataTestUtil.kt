@@ -1,6 +1,6 @@
 
 
-package com.elifox.legocatalog.utilities
+package com.elifox.legocatalog.util
 
 import androidx.lifecycle.LiveData
 import java.util.concurrent.CountDownLatch

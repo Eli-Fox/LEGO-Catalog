@@ -5,7 +5,7 @@
         android:id="@+id/garden_fragment"
         android:title="@string/my_garden_title"/>
     <item
-        android:id="@+id/legoset_list_fragment"
+        android:id="@+id/legosets_fragment"
         android:title="@string/legoset_list_title"/>
 
 </menu>

@@ -2,6 +2,7 @@
 
 package com.elifox.legocatalog.data
 
+import com.elifox.legocatalog.garden.data.GardenPlanting
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThat

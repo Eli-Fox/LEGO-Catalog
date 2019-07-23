@@ -5,7 +5,6 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.work.ListenableWorker.Result
 import androidx.work.WorkManager
 import androidx.work.testing.TestListenableWorkerBuilder
-import com.elifox.legocatalog.workers.SeedDatabaseWorker
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.Assert.assertThat
 import org.junit.Before

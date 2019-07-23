@@ -10,8 +10,13 @@ import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.elifox.legocatalog.utilities.DATABASE_NAME
-import com.elifox.legocatalog.workers.SeedDatabaseWorker
+import com.elifox.legocatalog.garden.data.GardenPlanting
+import com.elifox.legocatalog.garden.data.GardenPlantingDao
+import com.elifox.legocatalog.garden.data.Plant
+import com.elifox.legocatalog.legoset.data.LegoSet
+import com.elifox.legocatalog.legoset.data.LegoSetDao
+import com.elifox.legocatalog.legotheme.data.LegoTheme
+import com.elifox.legocatalog.worker.SeedDatabaseWorker
 
 /**
  * The Room database for this app
@@ -27,6 +32,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun legoSetDao(): LegoSetDao
 
     companion object {
+
+        const val DATABASE_NAME = "legocatalog-db"
 
         // For Singleton instantiation
         @Volatile private var instance: AppDatabase? = null

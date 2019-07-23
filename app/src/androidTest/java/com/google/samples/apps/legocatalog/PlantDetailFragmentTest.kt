@@ -17,9 +17,8 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasType
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
-import com.elifox.legocatalog.GardenActivity
-import com.elifox.legocatalog.utilities.chooser
-import com.elifox.legocatalog.utilities.testPlant
+import com.elifox.legocatalog.util.chooser
+import com.elifox.legocatalog.util.testPlant
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.Before
 import org.junit.Rule
@@ -31,7 +30,7 @@ class PlantDetailFragmentTest {
 
     @Rule
     @JvmField
-    val activityTestRule = ActivityTestRule(GardenActivity::class.java)
+    val activityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Before
     fun jumpToPlantDetailFragment() {

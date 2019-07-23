@@ -12,6 +12,12 @@ Introduction
 
 TODO
 
+Android Jetpack is a set of components, tools and guidance to make great Android apps. They bring
+together the existing Support Library and Architecture Components and arranges them into four
+categories:
+
+![Android Jetpack](screenshots/jetpack_donut.png "Android Jetpack Components")
+
 Getting Started
 ---------------
 This project uses the Gradle build system. To build this project, use the

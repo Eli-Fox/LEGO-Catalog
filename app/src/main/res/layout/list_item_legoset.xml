@@ -10,7 +10,7 @@
             type="android.view.View.OnClickListener"/>
         <variable
             name="legoSet"
-            type="com.elifox.legocatalog.data.LegoSet"/>
+            type="com.elifox.legocatalog.legoset.data.LegoSet"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

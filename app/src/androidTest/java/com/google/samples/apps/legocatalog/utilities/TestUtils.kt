@@ -1,13 +1,13 @@
 
 
-package com.elifox.legocatalog.utilities
+package com.elifox.legocatalog.util
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.widget.Toolbar
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra
-import com.elifox.legocatalog.data.Plant
+import com.elifox.legocatalog.garden.data.Plant
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf

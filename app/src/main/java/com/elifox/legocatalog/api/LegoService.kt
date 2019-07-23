@@ -1,7 +1,7 @@
 package com.elifox.legocatalog.api
 
-import com.elifox.legocatalog.data.LegoSet
-import com.elifox.legocatalog.data.LegoTheme
+import com.elifox.legocatalog.legoset.data.LegoSet
+import com.elifox.legocatalog.legotheme.data.LegoTheme
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

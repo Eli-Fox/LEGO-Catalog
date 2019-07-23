@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/garden_fragment"
-        android:name="com.elifox.legocatalog.GardenFragment"
+        android:name="com.elifox.legocatalog.garden.ui.GardenFragment"
         android:label="@string/my_garden_title"
         tools:layout="@layout/fragment_garden">
 
@@ -20,10 +20,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/legoset_list_fragment"
-        android:name="com.elifox.legocatalog.LegoSetListFragment"
+        android:id="@+id/legosets_fragment"
+        android:name="com.elifox.legocatalog.legoset.ui.LegoSetsFragment"
         android:label="@string/legoset_list_title"
-        tools:layout="@layout/fragment_legoset_list">
+        tools:layout="@layout/fragment_legosets">
 
         <action
             android:id="@+id/action_plant_list_fragment_to_plant_detail_fragment"
@@ -36,7 +36,7 @@
 
     <fragment
         android:id="@+id/plant_detail_fragment"
-        android:name="com.elifox.legocatalog.PlantDetailFragment"
+        android:name="com.elifox.legocatalog.legoset.ui.PlantDetailFragment"
         android:label="@string/plant_details_title"
         tools:layout="@layout/fragment_plant_detail">
         <argument
