@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/garden_fragment"
+        android:title="@string/my_garden_title"/>
+    <item
+        android:id="@+id/legoset_list_fragment"
+        android:title="@string/legoset_list_title"/>
+
+</menu>
