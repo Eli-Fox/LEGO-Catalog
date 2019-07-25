@@ -13,7 +13,7 @@ import com.elifox.legocatalog.databinding.ListItemLegosetBinding
 import com.elifox.legocatalog.legoset.data.LegoSet
 
 /**
- * Adapter for the [RecyclerView] in [LegoSetListFragment].
+ * Adapter for the [RecyclerView] in [LegoSetsFragment].
  */
 class LegoSetAdapter : ListAdapter<LegoSet, LegoSetAdapter.ViewHolder>(LegoSettDiffCallback()) {
 

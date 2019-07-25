@@ -1,10 +1,7 @@
-
-
 package com.elifox.legocatalog.legoset.data
 
 import androidx.lifecycle.distinctUntilChanged
-import androidx.lifecycle.liveData
-import kotlinx.coroutines.Dispatchers
+import com.elifox.legocatalog.data.statusLiveData
 
 /**
  * Repository module for handling data operations.
@@ -12,12 +9,11 @@ import kotlinx.coroutines.Dispatchers
 class LegoSetRepository private constructor(private val dao: LegoSetDao,
                                             private val remoteDataSource: LegoRemoteDataSource) {
 
-    // TODO paging, error, loading
-    val sets = liveData(Dispatchers.IO) {
-        emitSource(dao.getLegoSets())
-        val remoteSets = remoteDataSource.fetchData(1)
-        dao.insertAll(remoteSets)
-    }
+    // TODO paging
+    val sets = statusLiveData(
+            databaseQuery = { dao.getLegoSets() },
+            networkCall = { remoteDataSource.fetchData(1) },
+            saveCallResult = { dao.insertAll(it.results) })
 
     fun getLegoSet(plantId: String) = dao.getLegoSet(plantId)
 
@@ -30,7 +26,8 @@ class LegoSetRepository private constructor(private val dao: LegoSetDao,
     companion object {
 
         // For Singleton instantiation
-        @Volatile private var instance: LegoSetRepository? = null
+        @Volatile
+        private var instance: LegoSetRepository? = null
 
         fun getInstance(dao: LegoSetDao, remoteDataSource: LegoRemoteDataSource) =
                 instance ?: synchronized(this) {

@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.elifox.legocatalog.R
+import com.elifox.legocatalog.data.Result.Status.*
 import com.elifox.legocatalog.databinding.FragmentLegosetsBinding
 import com.elifox.legocatalog.di.InjectorUtils
+import com.google.android.material.snackbar.Snackbar
 
 class LegoSetsFragment : Fragment() {
 
@@ -25,7 +27,7 @@ class LegoSetsFragment : Fragment() {
 
         val adapter = LegoSetAdapter()
         binding.recyclerView.adapter = adapter
-        subscribeUi(adapter)
+        subscribeUi(binding, adapter)
 
         setHasOptionsMenu(true)
         return binding.root
@@ -45,9 +47,19 @@ class LegoSetsFragment : Fragment() {
         }
     }
 
-    private fun subscribeUi(adapter: LegoSetAdapter) {
-        viewModel.legoSets.observe(viewLifecycleOwner) { legoSets ->
-            if (legoSets != null) adapter.submitList(legoSets)
+    private fun subscribeUi(binding: FragmentLegosetsBinding, adapter: LegoSetAdapter) {
+        viewModel.legoSets.observe(viewLifecycleOwner) { result ->
+            when (result.status) {
+                SUCCESS -> {
+                    // TODO hide loading
+                    result.data?.let { adapter.submitList(it) }
+                }
+                // TODO show loading
+                LOADING -> Snackbar.make(binding.root, "Loading",
+                    Snackbar.LENGTH_SHORT).show()
+                ERROR -> Snackbar.make(binding.root, result.message!!,
+                        Snackbar.LENGTH_LONG).show()
+            }
         }
     }
 

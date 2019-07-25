@@ -1,18 +1,19 @@
 package com.elifox.legocatalog.legoset.data
 
+import com.elifox.legocatalog.api.BaseDataSource
 import com.elifox.legocatalog.api.LegoService
 
 /**
  * Works with the Lego API to get data.
  */
 //class LegoRemoteDataSource @Inject constructor(private val service: LegoService) {
-class LegoRemoteDataSource constructor(private val service: LegoService) {
+class LegoRemoteDataSource constructor(private val service: LegoService) : BaseDataSource() {
 
     companion object {
         const val PAGE_SIZE = 10
     }
 
-    suspend fun fetchData(page: Int) = service.getSets(page, PAGE_SIZE).results
+    suspend fun fetchData(page: Int) = getResult(service.getSets(page, PAGE_SIZE))
 
     /*
     // TODO pagination, error handling, ui loading
