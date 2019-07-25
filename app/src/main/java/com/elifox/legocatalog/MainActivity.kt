@@ -13,7 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.elifox.legocatalog.databinding.ActivityGardenBinding
+import com.elifox.legocatalog.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: ActivityGardenBinding = DataBindingUtil.setContentView(this,
-                R.layout.activity_garden)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this,
+                R.layout.activity_main)
         drawerLayout = binding.drawerLayout
 
         navController = findNavController(R.id.garden_nav_fragment)

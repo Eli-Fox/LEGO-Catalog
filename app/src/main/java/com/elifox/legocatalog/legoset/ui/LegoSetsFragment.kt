@@ -51,18 +51,18 @@ class LegoSetsFragment : Fragment() {
         viewModel.legoSets.observe(viewLifecycleOwner) { result ->
             when (result.status) {
                 SUCCESS -> {
-                    // TODO hide loading
+                    binding.progressBar.visibility = View.GONE
                     result.data?.let { adapter.submitList(it) }
                 }
-                // TODO show loading
-                LOADING -> Snackbar.make(binding.root, "Loading",
-                    Snackbar.LENGTH_SHORT).show()
+                LOADING -> binding.progressBar.visibility = View.VISIBLE
                 ERROR -> Snackbar.make(binding.root, result.message!!,
                         Snackbar.LENGTH_LONG).show()
             }
         }
     }
 
+
+    // TODO
     private fun updateData() {
         with(viewModel) {
             if (isFiltered()) {

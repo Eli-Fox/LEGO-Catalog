@@ -31,13 +31,12 @@ class GardenFragment : Fragment() {
     }
 
     private fun subscribeUi(adapter: GardenPlantingAdapter, binding: FragmentGardenBinding) {
-        viewModel.gardenPlantings.observe(viewLifecycleOwner) { plantings ->
-            binding.hasPlantings = !plantings.isNullOrEmpty()
-        }
-
         viewModel.plantAndGardenPlantings.observe(viewLifecycleOwner) { result ->
-            if (!result.isNullOrEmpty())
+            if (!result.isNullOrEmpty()) {
+                binding.gardenList.visibility = View.VISIBLE
                 adapter.submitList(result)
+            }
+
         }
     }
 }
