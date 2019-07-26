@@ -9,6 +9,6 @@ import com.elifox.legocatalog.api.LegoService
 //class LegoThemeRemoteDataSource @Inject constructor(private val service: LegoService) {
 class LegoThemeRemoteDataSource constructor(private val service: LegoService) : BaseDataSource() {
 
-    suspend fun fetchData() = getResult(service.getThemes())
+    suspend fun fetchData() = getResult(service.getThemes(1, 1000, "name"))
 
 }

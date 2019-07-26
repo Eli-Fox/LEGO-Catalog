@@ -27,7 +27,14 @@
 
         <argument
             android:name="themeId"
-            app:argType="integer" />
+            app:argType="integer"
+            android:defaultValue="-1"/>
+
+        <argument
+            android:name="themeName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
 
         <action
             android:id="@+id/action_plant_list_fragment_to_plant_detail_fragment"

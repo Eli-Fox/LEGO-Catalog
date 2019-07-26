@@ -1,5 +1,3 @@
-
-
 package com.elifox.legocatalog.legoset.ui
 
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +11,10 @@ class LegoSetsViewModel internal constructor(legoSetRepository: LegoSetRepositor
 
     private val growZoneNumber = MutableLiveData<Int>().apply { value = NO_GROW_ZONE }
 
-    val legoSets = legoSetRepository.observeSets(themeId)
+    val legoSets =
+            //if (NO_THEME == themeId)
+                legoSetRepository.observePagedSets()
+            //else legoSetRepository.observeSetsByTheme(themeId)
 
     /*
             growZoneNumber.switchMap {
@@ -42,6 +43,7 @@ class LegoSetsViewModel internal constructor(legoSetRepository: LegoSetRepositor
     fun isFiltered() = growZoneNumber.value != NO_GROW_ZONE
 
     companion object {
+        private const val NO_THEME = -1
         private const val NO_GROW_ZONE = -1
     }
 }

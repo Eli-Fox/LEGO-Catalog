@@ -2,15 +2,15 @@ package com.elifox.legocatalog.legoset.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
-import com.elifox.legocatalog.R
-import com.elifox.legocatalog.data.Result.Status.*
 import com.elifox.legocatalog.databinding.FragmentLegosetsBinding
 import com.elifox.legocatalog.di.InjectorUtils
-import com.google.android.material.snackbar.Snackbar
+
+
 
 class LegoSetsFragment : Fragment() {
 
@@ -29,6 +29,8 @@ class LegoSetsFragment : Fragment() {
 
         val adapter = LegoSetAdapter()
         binding.recyclerView.adapter = adapter
+        args.themeName?.let { setToolbarTitle(it) }
+
         subscribeUi(binding, adapter)
 
         setHasOptionsMenu(true)
@@ -36,12 +38,12 @@ class LegoSetsFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_filter, menu)
+        inflater.inflate(com.elifox.legocatalog.R.menu.menu_filter, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.filter_zone -> {
+            com.elifox.legocatalog.R.id.filter_zone -> {
                 updateData()
                 true
             }
@@ -49,6 +51,12 @@ class LegoSetsFragment : Fragment() {
         }
     }
 
+    private fun subscribeUi(binding: FragmentLegosetsBinding, adapter: LegoSetAdapter) {
+        viewModel.legoSets.observe(viewLifecycleOwner) { adapter.submitList(it) }
+    }
+
+// TODO paging with database + network
+/*
     private fun subscribeUi(binding: FragmentLegosetsBinding, adapter: LegoSetAdapter) {
         viewModel.legoSets.observe(viewLifecycleOwner) { result ->
             when (result.status) {
@@ -65,7 +73,7 @@ class LegoSetsFragment : Fragment() {
             }
         }
     }
-
+    */
 
     // TODO
     private fun updateData() {
@@ -76,5 +84,10 @@ class LegoSetsFragment : Fragment() {
                 setGrowZoneNumber(9)
             }
         }
+    }
+
+
+    private fun setToolbarTitle(title: String) {
+        (activity as AppCompatActivity).supportActionBar!!.title = title
     }
 }

@@ -20,7 +20,7 @@ class LegoThemeAdapter : ListAdapter<LegoTheme, LegoThemeAdapter.ViewHolder>(Dif
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val legoTheme = getItem(position)
         holder.apply {
-            bind(createOnClickListener(legoTheme.id), legoTheme)
+            bind(createOnClickListener(legoTheme.id, legoTheme.name), legoTheme)
             itemView.tag = legoTheme
         }
     }
@@ -30,9 +30,9 @@ class LegoThemeAdapter : ListAdapter<LegoTheme, LegoThemeAdapter.ViewHolder>(Dif
                 LayoutInflater.from(parent.context), parent, false))
     }
 
-    private fun createOnClickListener(id: Int): View.OnClickListener {
+    private fun createOnClickListener(id: Int, name: String): View.OnClickListener {
         return View.OnClickListener {
-            val direction = LegoThemeFragmentDirections.actionThemeFragmentToSetsFragment(id)
+            val direction = LegoThemeFragmentDirections.actionThemeFragmentToSetsFragment(id, name)
             it.findNavController().navigate(direction)
         }
     }

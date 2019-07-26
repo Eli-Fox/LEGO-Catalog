@@ -14,6 +14,7 @@
             android:clipToPadding="false"
             android:paddingLeft="@dimen/margin_normal"
             android:paddingRight="@dimen/margin_normal"
+            android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:context="com.elifox.legocatalog.MainActivity"
             tools:listitem="@layout/list_item_legoset"/>
@@ -23,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:visibility="gone"
             tools:visibility="visible"/>
 
     </FrameLayout>

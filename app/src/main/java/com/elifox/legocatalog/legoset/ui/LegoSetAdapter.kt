@@ -1,13 +1,11 @@
-
-
 package com.elifox.legocatalog.legoset.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.elifox.legocatalog.databinding.ListItemLegosetBinding
 import com.elifox.legocatalog.legoset.data.LegoSet
@@ -15,13 +13,15 @@ import com.elifox.legocatalog.legoset.data.LegoSet
 /**
  * Adapter for the [RecyclerView] in [LegoSetsFragment].
  */
-class LegoSetAdapter : ListAdapter<LegoSet, LegoSetAdapter.ViewHolder>(LegoSettDiffCallback()) {
+class LegoSetAdapter : PagedListAdapter<LegoSet, LegoSetAdapter.ViewHolder>(LegoSettDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val legoSet = getItem(position)
-        holder.apply {
-            bind(createOnClickListener(legoSet.id), legoSet)
-            itemView.tag = legoSet
+        legoSet?.let {
+            holder.apply {
+                bind(createOnClickListener(legoSet.id), legoSet)
+                itemView.tag = legoSet
+            }
         }
     }
 
@@ -38,7 +38,7 @@ class LegoSetAdapter : ListAdapter<LegoSet, LegoSetAdapter.ViewHolder>(LegoSettD
     }
 
     class ViewHolder(
-        private val binding: ListItemLegosetBinding
+            private val binding: ListItemLegosetBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(listener: View.OnClickListener, item: LegoSet) {

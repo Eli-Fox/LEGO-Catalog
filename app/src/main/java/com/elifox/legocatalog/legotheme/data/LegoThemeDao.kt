@@ -12,7 +12,7 @@ import androidx.room.Query
 @Dao
 interface LegoThemeDao {
 
-    @Query("SELECT * FROM themes ORDER BY id")
+    @Query("SELECT * FROM themes ORDER BY name")
     fun getLegoThemes(): LiveData<List<LegoTheme>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

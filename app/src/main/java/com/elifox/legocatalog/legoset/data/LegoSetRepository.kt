@@ -1,7 +1,12 @@
 package com.elifox.legocatalog.legoset.data
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.distinctUntilChanged
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.elifox.legocatalog.data.statusLiveData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 /**
  * Repository module for handling data operations.
@@ -9,19 +14,24 @@ import com.elifox.legocatalog.data.statusLiveData
 class LegoSetRepository private constructor(private val dao: LegoSetDao,
                                             private val legoSetRemoteDataSource: LegoSetRemoteDataSource) {
 
-    // TODO paging
-    fun observeSets(themeId: Int) = statusLiveData(
+    fun observeSetsByTheme(themeId: Int) = statusLiveData(
             databaseQuery = { dao.getLegoSets(themeId) },
-            networkCall = { legoSetRemoteDataSource.fetchData(1, themeId) },
+            networkCall = { legoSetRemoteDataSource.fetchSets(1, themeId) },
             saveCallResult = { dao.insertAll(it.results) })
+
+    fun observePagedSets(): LiveData<PagedList<LegoSet>> {
+        val pagedDataSource = LegoSetPageDataSourceFactory(legoSetRemoteDataSource,
+                CoroutineScope(Dispatchers.IO))
+        return LivePagedListBuilder(pagedDataSource, pagedDataSource.pagedListConfig()).build()
+    }
 
     fun getLegoSet(plantId: String) = dao.getLegoSet(plantId)
 
     fun getDistinctLegoSet(id: String) = getLegoSet(id).distinctUntilChanged()
 
     // TODO filtered
-    //fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
     //        dao.getPlantsWithGrowZoneNumber(growZoneNumber)
+    //fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
 
     companion object {
 
