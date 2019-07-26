@@ -16,6 +16,7 @@ import com.elifox.legocatalog.garden.data.Plant
 import com.elifox.legocatalog.legoset.data.LegoSet
 import com.elifox.legocatalog.legoset.data.LegoSetDao
 import com.elifox.legocatalog.legotheme.data.LegoTheme
+import com.elifox.legocatalog.legotheme.data.LegoThemeDao
 import com.elifox.legocatalog.worker.SeedDatabaseWorker
 
 /**
@@ -30,6 +31,7 @@ import com.elifox.legocatalog.worker.SeedDatabaseWorker
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gardenPlantingDao(): GardenPlantingDao
     abstract fun legoSetDao(): LegoSetDao
+    abstract fun legoThemeDao(): LegoThemeDao
 
     companion object {
 

@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.elifox.legocatalog.garden.data.PlantAndGardenPlantings
 import com.elifox.legocatalog.R
 import com.elifox.legocatalog.databinding.ListItemGardenPlantingBinding
+import com.elifox.legocatalog.garden.data.PlantAndGardenPlantings
 
 class GardenPlantingAdapter :
     ListAdapter<PlantAndGardenPlantings, GardenPlantingAdapter.ViewHolder>(GardenPlantDiffCallback()) {
@@ -37,9 +36,9 @@ class GardenPlantingAdapter :
 
     private fun createOnClickListener(plantId: String): View.OnClickListener {
         return View.OnClickListener {
-                val direction =
-                        GardenFragmentDirections.actionGardenFragmentToPlantDetailFragment(plantId)
-                it.findNavController().navigate(direction)
+                //val direction =
+                //        GardenFragmentDirections.actionGardenFragmentToPlantDetailFragment(plantId)
+                //it.findNavController().navigate(direction)
         }
     }
 

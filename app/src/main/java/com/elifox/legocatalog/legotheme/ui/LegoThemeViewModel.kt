@@ -1,29 +1,29 @@
 
 
-package com.elifox.legocatalog.legoset.ui
+package com.elifox.legocatalog.legotheme.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.elifox.legocatalog.legoset.data.LegoSetRepository
+import com.elifox.legocatalog.legotheme.data.LegoThemeRepository
 
 /**
- * The ViewModel for [LegoSetsFragment].
+ * The ViewModel for [LegoThemeFragment].
  */
-class LegoSetsViewModel internal constructor(legoSetRepository: LegoSetRepository, themeId: Int) : ViewModel() {
+class LegoThemeViewModel internal constructor(repository: LegoThemeRepository) : ViewModel() {
 
     private val growZoneNumber = MutableLiveData<Int>().apply { value = NO_GROW_ZONE }
 
-    val legoSets = legoSetRepository.observeSets(themeId)
+    val legoThemes= repository.themes
 
     /*
             growZoneNumber.switchMap {
-        legoSetRepository.getLegoSets()
+        repository.getLegoSets()
 
 
         if (it == NO_GROW_ZONE) {
-            legoSetRepository.getLegoSets()
+            repository.getLegoSets()
         } else {
-            legoSetRepository.getPlantsWithGrowZoneNumber(it)
+            repository.getPlantsWithGrowZoneNumber(it)
         }
 
 

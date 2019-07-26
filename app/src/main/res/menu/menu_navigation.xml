@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/garden_fragment"
-        android:title="@string/my_garden_title"/>
+        android:id="@+id/legothemes_fragment"
+        android:title="@string/legothemes_title"/>
     <item
         android:id="@+id/legosets_fragment"
-        android:title="@string/legoset_list_title"/>
+        android:title="@string/legosets_title"/>
 
 </menu>

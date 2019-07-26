@@ -24,6 +24,7 @@ interface LegoService {
     @GET("lego/sets/")
     suspend fun getSets(@Query("page") page: Int? = null,
                         @Query("page_size") pageSize: Int? = null,
+                        @Query("theme_id") themeId: Int? = null,
                         @Query("ordering") order: String? = null): Response<ResultsResponse<LegoSet>>
 
     @GET("lego/sets/{id}/")

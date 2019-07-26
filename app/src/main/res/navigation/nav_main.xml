@@ -2,17 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@+id/garden_fragment">
+    app:startDestination="@+id/legothemes_fragment">
 
     <fragment
-        android:id="@+id/garden_fragment"
-        android:name="com.elifox.legocatalog.garden.ui.GardenFragment"
-        android:label="@string/my_garden_title"
-        tools:layout="@layout/fragment_garden">
+        android:id="@+id/legothemes_fragment"
+        android:name="com.elifox.legocatalog.legotheme.ui.LegoThemeFragment"
+        android:label="@string/legothemes_title"
+        tools:layout="@layout/fragment_themes">
 
         <action
-            android:id="@+id/action_garden_fragment_to_plant_detail_fragment"
-            app:destination="@id/plant_detail_fragment"
+            android:id="@+id/action_theme_fragment_to_sets_fragment"
+            app:destination="@id/legosets_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -22,8 +22,12 @@
     <fragment
         android:id="@+id/legosets_fragment"
         android:name="com.elifox.legocatalog.legoset.ui.LegoSetsFragment"
-        android:label="@string/legoset_list_title"
+        android:label="@string/legosets_title"
         tools:layout="@layout/fragment_legosets">
+
+        <argument
+            android:name="themeId"
+            app:argType="integer" />
 
         <action
             android:id="@+id/action_plant_list_fragment_to_plant_detail_fragment"

@@ -7,12 +7,12 @@ import com.elifox.legocatalog.data.statusLiveData
  * Repository module for handling data operations.
  */
 class LegoSetRepository private constructor(private val dao: LegoSetDao,
-                                            private val remoteDataSource: LegoRemoteDataSource) {
+                                            private val legoSetRemoteDataSource: LegoSetRemoteDataSource) {
 
     // TODO paging
-    val sets = statusLiveData(
-            databaseQuery = { dao.getLegoSets() },
-            networkCall = { remoteDataSource.fetchData(1) },
+    fun observeSets(themeId: Int) = statusLiveData(
+            databaseQuery = { dao.getLegoSets(themeId) },
+            networkCall = { legoSetRemoteDataSource.fetchData(1, themeId) },
             saveCallResult = { dao.insertAll(it.results) })
 
     fun getLegoSet(plantId: String) = dao.getLegoSet(plantId)
@@ -29,10 +29,10 @@ class LegoSetRepository private constructor(private val dao: LegoSetDao,
         @Volatile
         private var instance: LegoSetRepository? = null
 
-        fun getInstance(dao: LegoSetDao, remoteDataSource: LegoRemoteDataSource) =
+        fun getInstance(dao: LegoSetDao, legoSetRemoteDataSource: LegoSetRemoteDataSource) =
                 instance ?: synchronized(this) {
                     instance
-                            ?: LegoSetRepository(dao, remoteDataSource).also { instance = it }
+                            ?: LegoSetRepository(dao, legoSetRemoteDataSource).also { instance = it }
                 }
     }
 }

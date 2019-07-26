@@ -1,33 +1,31 @@
-package com.elifox.legocatalog.legoset.ui
+package com.elifox.legocatalog.legotheme.ui
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
-import androidx.navigation.fragment.navArgs
+import androidx.lifecycle.Observer
 import com.elifox.legocatalog.R
-import com.elifox.legocatalog.data.Result.Status.*
-import com.elifox.legocatalog.databinding.FragmentLegosetsBinding
+import com.elifox.legocatalog.data.Result
+import com.elifox.legocatalog.databinding.FragmentThemesBinding
 import com.elifox.legocatalog.di.InjectorUtils
 import com.google.android.material.snackbar.Snackbar
 
-class LegoSetsFragment : Fragment() {
+class LegoThemeFragment : Fragment() {
 
-    private val args: LegoSetsFragmentArgs by navArgs()
-    private val viewModel: LegoSetsViewModel by viewModels {
-        InjectorUtils.provideLegoSetsViewModelFactory(requireContext(), args.themeId)
+    private val viewModel: LegoThemeViewModel by viewModels {
+        InjectorUtils.provideLegoThemeViewModelFactory(requireContext())
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentLegosetsBinding.inflate(inflater, container, false)
+        val binding = FragmentThemesBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
-        val adapter = LegoSetAdapter()
+        val adapter = LegoThemeAdapter()
         binding.recyclerView.adapter = adapter
         subscribeUi(binding, adapter)
 
@@ -49,21 +47,21 @@ class LegoSetsFragment : Fragment() {
         }
     }
 
-    private fun subscribeUi(binding: FragmentLegosetsBinding, adapter: LegoSetAdapter) {
-        viewModel.legoSets.observe(viewLifecycleOwner) { result ->
+    private fun subscribeUi(binding: FragmentThemesBinding, adapter: LegoThemeAdapter) {
+        viewModel.legoThemes.observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
-                SUCCESS -> {
+                Result.Status.SUCCESS -> {
                     binding.progressBar.visibility = View.GONE
                     result.data?.let { adapter.submitList(it) }
                 }
-                LOADING -> binding.progressBar.visibility = View.VISIBLE
-                ERROR -> {
+                Result.Status.LOADING -> binding.progressBar.visibility = View.VISIBLE
+                Result.Status.ERROR -> {
                     binding.progressBar.visibility = View.GONE
                     Snackbar.make(binding.root, result.message!!,
                             Snackbar.LENGTH_LONG).show()
                 }
             }
-        }
+        })
     }
 
 

@@ -5,6 +5,6 @@
     <item android:id="@+id/filter_zone"
         android:icon="@drawable/ic_filter_list_24dp"
         app:showAsAction="always"
-        android:title="@string/menu_filter_by_grow_zone"/>
+        android:title="@string/filter"/>
 
 </menu>

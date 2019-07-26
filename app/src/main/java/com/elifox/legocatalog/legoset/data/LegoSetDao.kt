@@ -12,8 +12,8 @@ import androidx.room.Query
 @Dao
 interface LegoSetDao {
 
-    @Query("SELECT * FROM sets ORDER BY name")
-    fun getLegoSets(): LiveData<List<LegoSet>>
+    @Query("SELECT * FROM sets WHERE themeId = :themeId ORDER BY name")
+    fun getLegoSets(themeId: Int): LiveData<List<LegoSet>>
 
     // TODO filtered
     //@Query("SELECT * FROM sets WHERE growZoneNumber = :growZoneNumber ORDER BY name")

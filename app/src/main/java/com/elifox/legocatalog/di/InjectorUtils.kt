@@ -6,20 +6,29 @@ import android.content.Context
 import com.elifox.legocatalog.data.AppDatabase
 import com.elifox.legocatalog.garden.data.GardenPlantingRepository
 import com.elifox.legocatalog.garden.ui.GardenPlantingListViewModelFactory
-import com.elifox.legocatalog.legoset.data.LegoRemoteDataSource
+import com.elifox.legocatalog.legoset.data.LegoSetRemoteDataSource
 import com.elifox.legocatalog.legoset.data.LegoSetRepository
+import com.elifox.legocatalog.legoset.ui.LegoSetsViewModelFactory
 import com.elifox.legocatalog.legoset.ui.PlantDetailViewModelFactory
-import com.elifox.legocatalog.legoset.ui.PlantListViewModelFactory
+import com.elifox.legocatalog.legotheme.data.LegoThemeRemoteDataSource
+import com.elifox.legocatalog.legotheme.data.LegoThemeRepository
+import com.elifox.legocatalog.legotheme.ui.LegoThemeViewModelFactory
 
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.
  */
 object InjectorUtils {
 
-    private fun getPlantRepository(context: Context): LegoSetRepository {
+    private fun getLegoSetRepository(context: Context): LegoSetRepository {
         return LegoSetRepository.getInstance(
                 AppDatabase.getInstance(context.applicationContext).legoSetDao(),
-                LegoRemoteDataSource(AppModule().legoService()))
+                LegoSetRemoteDataSource(AppModule().legoService()))
+    }
+
+    private fun getLegoThemeRepository(context: Context): LegoThemeRepository {
+        return LegoThemeRepository.getInstance(
+                AppDatabase.getInstance(context.applicationContext).legoThemeDao(),
+                LegoThemeRemoteDataSource(AppModule().legoService()))
     }
 
     private fun getGardenPlantingRepository(context: Context): GardenPlantingRepository {
@@ -34,16 +43,21 @@ object InjectorUtils {
         return GardenPlantingListViewModelFactory(repository)
     }
 
-    fun providePlantListViewModelFactory(context: Context): PlantListViewModelFactory {
-        val repository = getPlantRepository(context)
-        return PlantListViewModelFactory(repository)
+    fun provideLegoSetsViewModelFactory(context: Context, themeId: Int): LegoSetsViewModelFactory {
+        val repository = getLegoSetRepository(context)
+        return LegoSetsViewModelFactory(repository, themeId)
+    }
+
+    fun provideLegoThemeViewModelFactory(context: Context): LegoThemeViewModelFactory {
+        val repository = getLegoThemeRepository(context)
+        return LegoThemeViewModelFactory(repository)
     }
 
     fun providePlantDetailViewModelFactory(
         context: Context,
         plantId: String
     ): PlantDetailViewModelFactory {
-        return PlantDetailViewModelFactory(getPlantRepository(context),
+        return PlantDetailViewModelFactory(getLegoSetRepository(context),
                 getGardenPlantingRepository(context), plantId)
     }
 }

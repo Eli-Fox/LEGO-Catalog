@@ -10,10 +10,11 @@ import com.elifox.legocatalog.legoset.data.LegoSetRepository
 /**
  * Factory for creating a [LegoSetsViewModel] with a constructor that takes a [LegoSetRepository].
  */
-class PlantListViewModelFactory(
-    private val repository: LegoSetRepository
+class LegoSetsViewModelFactory(
+        private val repository: LegoSetRepository,
+        private val themeId: Int
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>) = LegoSetsViewModel(repository) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>) = LegoSetsViewModel(repository, themeId) as T
 }

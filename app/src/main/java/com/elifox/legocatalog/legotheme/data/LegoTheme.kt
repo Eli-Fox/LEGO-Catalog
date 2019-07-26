@@ -12,7 +12,7 @@ data class LegoTheme(
         @field:SerializedName("name")
         val name: String,
         @field:SerializedName("parent_id")
-        val parentId: Int
+        val parentId: Int? = null
 ) {
     override fun toString() = name
 }
