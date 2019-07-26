@@ -7,9 +7,9 @@ data class ResultsResponse<T>(
     @SerializedName("count")
     val count: Int,
     @SerializedName("next")
-    val next: String,
+    val next: String? = null,
     @SerializedName("previous")
-    val previous: Any,
+    val previous: String? = null,
     @SerializedName("results")
     val results: List<T>
 )

@@ -10,7 +10,7 @@ import com.elifox.legocatalog.api.LegoService
 class LegoSetRemoteDataSource constructor(private val service: LegoService) : BaseDataSource() {
 
     suspend fun fetchSets(page: Int, pageSize: Int? = null, themeId: Int? = null)
-            = getResult(service.getSets(page, pageSize, themeId))
+            = getResult(service.getSets(page, pageSize, themeId, "name"))
 
     /*
     // TODO pagination, error handling, ui loading

@@ -43,7 +43,7 @@ object InjectorUtils {
         return GardenPlantingListViewModelFactory(repository)
     }
 
-    fun provideLegoSetsViewModelFactory(context: Context, themeId: Int): LegoSetsViewModelFactory {
+    fun provideLegoSetsViewModelFactory(context: Context, themeId: Int?): LegoSetsViewModelFactory {
         val repository = getLegoSetRepository(context)
         return LegoSetsViewModelFactory(repository, themeId)
     }

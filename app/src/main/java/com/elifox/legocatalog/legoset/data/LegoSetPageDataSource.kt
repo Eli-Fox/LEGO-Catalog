@@ -8,7 +8,8 @@ import kotlinx.coroutines.launch
 /**
  * Data source for lego sets pagination via paging library
  */
-class LegoSetPageDataSource(private val dataSource: LegoSetRemoteDataSource,
+class LegoSetPageDataSource(private val themeId: Int? = null,
+                            private val dataSource: LegoSetRemoteDataSource,
                             private val scope: CoroutineScope) : PageKeyedDataSource<Int, LegoSet>() {
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, LegoSet>) {
@@ -33,7 +34,7 @@ class LegoSetPageDataSource(private val dataSource: LegoSetRemoteDataSource,
 
     private fun fetchData(page: Int, pageSize: Int, callback: (List<LegoSet>) -> Unit) {
         scope.launch(getJobErrorHandler()) {
-            val response = dataSource.fetchSets(page, pageSize)
+            val response = dataSource.fetchSets(page, pageSize, themeId)
             callback(response.data!!.results)
         }
     }

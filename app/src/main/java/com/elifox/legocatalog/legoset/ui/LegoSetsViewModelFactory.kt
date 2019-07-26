@@ -12,7 +12,7 @@ import com.elifox.legocatalog.legoset.data.LegoSetRepository
  */
 class LegoSetsViewModelFactory(
         private val repository: LegoSetRepository,
-        private val themeId: Int
+        private val themeId: Int?
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")

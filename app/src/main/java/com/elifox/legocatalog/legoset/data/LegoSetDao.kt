@@ -1,6 +1,7 @@
 package com.elifox.legocatalog.legoset.data
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -15,9 +16,11 @@ interface LegoSetDao {
     @Query("SELECT * FROM sets WHERE themeId = :themeId ORDER BY name")
     fun getLegoSets(themeId: Int): LiveData<List<LegoSet>>
 
-    // TODO filtered
-    //@Query("SELECT * FROM sets WHERE growZoneNumber = :growZoneNumber ORDER BY name")
-    //fun getPlantsWithGrowZoneNumber(growZoneNumber: Int): LiveData<List<LegoSet>>
+    @Query("SELECT * FROM sets WHERE themeId = :themeId ORDER BY name")
+    fun getPagedLegoSetsByTheme(themeId: Int): DataSource.Factory<Int, LegoSet>
+
+    @Query("SELECT * FROM sets ORDER BY name")
+    fun getPagedLegoSets(): DataSource.Factory<Int, LegoSet>
 
     @Query("SELECT * FROM sets WHERE id = :id")
     fun getLegoSet(id: String): LiveData<LegoSet>
