@@ -9,18 +9,18 @@
     android:padding="@dimen/navigation_drawer_header_padding"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <!-- TODO: add actual logo once available -->
     <ImageView
         android:layout_width="@dimen/navigation_drawer_image_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/ic_grid_list_24dp"
+        android:visibility="gone"
         android:contentDescription="@string/navigation_drawer_header_content_description" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
+        android:layout_gravity="center"
         android:text="@string/navigation_drawer_header_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 

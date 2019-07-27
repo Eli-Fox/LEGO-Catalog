@@ -2,7 +2,7 @@
 
     <!-- Resources that do not require translation -->
     <string name="app_name" translatable="false">LEGO® Catalog</string>
-    <string name="navigation_drawer_header_title" translatable="false">LEGO® Catalog</string>
+    <string name="navigation_drawer_header_title" translatable="false">LEGO®</string>
 
     <!-- Translatable resources -->
     <string name="menu_filter_by_grow_zone" translation_description="The label for the menu item to filter the displayed plants by grow zone.">Filter by grow zone</string>
