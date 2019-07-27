@@ -19,34 +19,33 @@
         android:onClick="@{clickListener}">
 
         <ImageView
-            android:id="@+id/plant_item_image"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/plant_item_image_height"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginBottom="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:layout_marginStart="@dimen/margin_small"
-            android:contentDescription="@string/a11y_plant_item_image"
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="@string/a11y_legoset_item_image"
             android:scaleType="centerCrop"
             app:imageFromUrl="@{legoSet.imageUrl}"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            android:background="@color/colorImagePlaceholder"/>
 
         <TextView
-            android:id="@+id/plant_item_title"
+            android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginTop="@dimen/margin_small"
+            android:paddingLeft="@dimen/margin_normal"
+            android:paddingRight="@dimen/margin_normal"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_small"
             android:text="@{legoSet.name}"
             android:textAppearance="?attr/textAppearanceListItem"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/plant_item_image"
-            tools:text="Tomato"/>
+            app:layout_constraintTop_toBottomOf="@id/image"
+            tools:text="Tree House"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
