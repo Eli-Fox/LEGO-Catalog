@@ -1,4 +1,4 @@
-package com.elifox.legocatalog.util
+package com.elifox.legocatalog.ui
 
 import android.view.View
 import android.widget.ProgressBar

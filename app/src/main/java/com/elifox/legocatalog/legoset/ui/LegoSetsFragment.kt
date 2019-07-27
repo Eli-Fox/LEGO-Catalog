@@ -8,10 +8,14 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.elifox.legocatalog.R
 import com.elifox.legocatalog.databinding.FragmentLegosetsBinding
 import com.elifox.legocatalog.di.InjectorUtils
+import com.elifox.legocatalog.ui.GridSpacingItemDecoration
+import com.elifox.legocatalog.ui.VerticalItemDecoration
+import com.elifox.legocatalog.ui.setTitle
 import com.elifox.legocatalog.util.ConnectivityUtil
-import com.elifox.legocatalog.util.setTitle
 
 class LegoSetsFragment : Fragment() {
 
@@ -22,8 +26,14 @@ class LegoSetsFragment : Fragment() {
                 if (args.themeId == -1) null else args.themeId)
     }
     private val adapter: LegoSetAdapter by lazy { LegoSetAdapter() }
+
     private val linearLayoutManager: LinearLayoutManager by lazy { LinearLayoutManager(activity) }
-    private val gridLayoutManager: GridLayoutManager by lazy { GridLayoutManager(activity, 3) }
+    private val gridLayoutManager: GridLayoutManager by lazy { GridLayoutManager(activity, SPAN_COUNT) }
+
+    private val linearDecoration: RecyclerView.ItemDecoration by lazy { VerticalItemDecoration(
+            resources.getDimension(R.dimen.margin_normal).toInt()) }
+    private val gridDecoration: RecyclerView.ItemDecoration by lazy { GridSpacingItemDecoration(
+            SPAN_COUNT, resources.getDimension(R.dimen.margin_grid).toInt()) }
     private lateinit var binding: FragmentLegosetsBinding
 
     private var isLinearLayoutManager: Boolean = true
@@ -47,12 +57,12 @@ class LegoSetsFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(com.elifox.legocatalog.R.menu.menu_grid, menu)
+        inflater.inflate(R.menu.menu_grid, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            com.elifox.legocatalog.R.id.grid -> {
+            R.id.grid -> {
                 isLinearLayoutManager = !isLinearLayoutManager
                 setLayoutManager()
                 true
@@ -76,9 +86,21 @@ class LegoSetsFragment : Fragment() {
                     .findFirstCompletelyVisibleItemPosition()
         }
 
-        recyclerView.layoutManager =
-                if (isLinearLayoutManager) linearLayoutManager else gridLayoutManager
+        if (isLinearLayoutManager) {
+            recyclerView.removeItemDecoration(gridDecoration)
+            recyclerView.addItemDecoration(linearDecoration)
+            recyclerView.layoutManager = linearLayoutManager
+        } else {
+            recyclerView.removeItemDecoration(linearDecoration)
+            recyclerView.addItemDecoration(gridDecoration)
+            recyclerView.layoutManager = gridLayoutManager
+        }
+
         recyclerView.scrollToPosition(scrollPosition)
+    }
+
+    companion object {
+        const val SPAN_COUNT = 3
     }
 
 }

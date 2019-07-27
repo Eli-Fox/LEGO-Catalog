@@ -13,8 +13,6 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:scrollbars="vertical"
-            android:paddingLeft="@dimen/margin_normal"
-            android:paddingRight="@dimen/margin_normal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:context="com.elifox.legocatalog.MainActivity"
             tools:listitem="@layout/list_item_theme"/>
