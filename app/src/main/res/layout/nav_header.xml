@@ -14,7 +14,7 @@
         android:layout_width="@dimen/navigation_drawer_image_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/ic_navigation_drawer_header_logo"
+        android:src="@drawable/ic_grid_list_24dp"
         android:contentDescription="@string/navigation_drawer_header_content_description" />
 
     <TextView

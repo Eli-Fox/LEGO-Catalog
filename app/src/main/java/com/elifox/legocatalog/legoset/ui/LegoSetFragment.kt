@@ -11,10 +11,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.elifox.legocatalog.R
+import com.elifox.legocatalog.binding.bindImageFromUrl
 import com.elifox.legocatalog.data.Result
 import com.elifox.legocatalog.databinding.FragmentLegoSetBinding
 import com.elifox.legocatalog.di.InjectorUtils
+import com.elifox.legocatalog.legoset.data.LegoSet
 import com.elifox.legocatalog.ui.hide
+import com.elifox.legocatalog.ui.setTitle
 import com.elifox.legocatalog.ui.show
 import com.google.android.material.snackbar.Snackbar
 
@@ -24,6 +27,7 @@ import com.google.android.material.snackbar.Snackbar
 class LegoSetFragment : Fragment() {
 
     private val args: LegoSetFragmentArgs by navArgs()
+    private var legoSetName: String = "Set"
 
     private val viewModel: LegoSetViewModel by viewModels {
         InjectorUtils.provideLegoSetViewModelFactory(requireActivity(), args.id)
@@ -58,8 +62,7 @@ class LegoSetFragment : Fragment() {
         return when (item.itemId) {
             R.id.action_share -> {
                 val shareIntent = ShareCompat.IntentBuilder.from(activity)
-                        // TODO
-                        .setText("check it OUT!")
+                        .setText(getString(R.string.share_lego_set, legoSetName))
                         .setType("text/plain")
                         .createChooserIntent()
                         .apply {
@@ -84,18 +87,25 @@ class LegoSetFragment : Fragment() {
             when (result.status) {
                 Result.Status.SUCCESS -> {
                     binding.progressBar.hide()
-                    result.data?.let {
-                        binding.legoSet = it
-                        binding.executePendingBindings()
-                    }
+                    result.data?.let { bindView(binding, it) }
                 }
                 Result.Status.LOADING -> binding.progressBar.show()
                 Result.Status.ERROR -> {
                     binding.progressBar.hide()
-                    // TODO constraint layout
-                    Snackbar.make(binding.root, result.message!!, Snackbar.LENGTH_LONG).show()
+                    //Snackbar.make(binding.coordinatorLayout, result.message!!, Snackbar.LENGTH_LONG).show()
                 }
             }
         })
+    }
+
+    private fun bindView(binding: FragmentLegoSetBinding, legoSet: LegoSet) {
+        legoSet.apply {
+            setTitle(name)
+            bindImageFromUrl(binding.image, imageUrl)
+            binding.name.text = name
+            binding.year.text = getString(R.string.year, year ?: 0)
+            binding.numParts.text = getString(R.string.number_of_parts, numParts ?: 0)
+            legoSetName = name
+        }
     }
 }

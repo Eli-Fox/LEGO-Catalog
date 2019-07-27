@@ -2,13 +2,12 @@
 
     <!-- Resources that do not require translation -->
     <string name="app_name" translatable="false">LEGO® Catalog</string>
-    <string name="navigation_drawer_header_title" translatable="false">Sunflower</string>
+    <string name="navigation_drawer_header_title" translatable="false">LEGO® Catalog</string>
 
     <!-- Translatable resources -->
     <string name="menu_filter_by_grow_zone" translation_description="The label for the menu item to filter the displayed plants by grow zone.">Filter by grow zone</string>
     <string name="filter" translation_description="Common Filter">Filter</string>
     <string name="grid" translation_description="Common Filter">Switch between grid and list</string>
-    <string name="plant_detail_image_content_description" translation_description="Content description for the header / hero image that is show at the top of the plant detail screen.">Image of plant</string>
     <string name="legothemes_title">Browse Themes</string>
     <string name="legosets_title">Browse All Sets</string>
     <string name="legoset_details_title">Set details</string>
@@ -18,6 +17,9 @@
     <string name="planted_date" translation_description="Text with placeholders that indicates when the plant was planted. Example: 'Sunflower planted on May 24, 2018'.">%1$s planted on %2$s</string>
     <string name="menu_item_share" translation_description="The label for the Share menu item">Share</string>
     <string name="share_text_plant" translation_description="The default messaged used when sharing a plant on SNS, etc.">Check out the %s plant in the Android Sunflower app</string>
+    <string name="number_of_parts">Number of parts: %d</string>
+    <string name="year">Year: %d</string>
+    <string name="share_lego_set">Check this Lego set out: %s</string>
 
     <!-- String plurals and their related prefix / suffix strings -->
     <string name="watering_needs_prefix" translation_description="Prefix for the text describing how often a plant should be watered. Used in combination with watering_needs_suffix.">Watering needs:</string>
