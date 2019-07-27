@@ -27,4 +27,7 @@ interface LegoSetDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(legoSets: List<LegoSet>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(legoSet: LegoSet)
 }

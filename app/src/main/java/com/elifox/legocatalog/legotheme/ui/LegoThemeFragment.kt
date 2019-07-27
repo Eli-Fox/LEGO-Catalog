@@ -61,7 +61,7 @@ class LegoThemeFragment : Fragment() {
         viewModel.legoThemes.observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
                 Result.Status.SUCCESS -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.progressBar.hide()
                     result.data?.let { adapter.submitList(it) }
                 }
                 Result.Status.LOADING -> binding.progressBar.show()
@@ -74,7 +74,7 @@ class LegoThemeFragment : Fragment() {
     }
 
 
-    // TODO
+    // TODO filter
     private fun updateData() {
         with(viewModel) {
             if (isFiltered()) {

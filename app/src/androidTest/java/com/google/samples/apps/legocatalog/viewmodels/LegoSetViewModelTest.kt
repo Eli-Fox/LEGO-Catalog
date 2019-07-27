@@ -7,7 +7,7 @@ import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import com.elifox.legocatalog.data.AppDatabase
 import com.elifox.legocatalog.legoset.data.LegoSetRepository
-import com.elifox.legocatalog.legoset.ui.PlantDetailViewModel
+import com.elifox.legocatalog.legoset.ui.LegoSetViewModel
 import com.elifox.legocatalog.util.getValue
 import com.elifox.legocatalog.util.testPlant
 import org.junit.After
@@ -16,10 +16,10 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class PlantDetailViewModelTest {
+class LegoSetViewModelTest {
 
     private lateinit var appDatabase: AppDatabase
-    private lateinit var viewModel: PlantDetailViewModel
+    private lateinit var viewModel: LegoSetViewModel
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -32,7 +32,7 @@ class PlantDetailViewModelTest {
         val plantRepo = LegoSetRepository.getInstance(appDatabase.legoSetDao())
         val gardenPlantingRepo = GardenPlantingRepository.getInstance(
                 appDatabase.gardenPlantingDao())
-        viewModel = PlantDetailViewModel(plantRepo, gardenPlantingRepo, testPlant.plantId)
+        viewModel = LegoSetViewModel(plantRepo, gardenPlantingRepo, testPlant.plantId)
     }
 
     @After

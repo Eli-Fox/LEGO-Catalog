@@ -6,7 +6,6 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.elifox.legocatalog.data.statusLiveData
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 
 /**
  * Repository module for handling data operations.
@@ -14,8 +13,9 @@ import kotlinx.coroutines.Dispatchers
 class LegoSetRepository private constructor(private val dao: LegoSetDao,
                                             private val legoSetRemoteDataSource: LegoSetRemoteDataSource) {
 
-    fun observePagedSets(connectivityAvailable: Boolean, themeId: Int? = null) =
-            if (connectivityAvailable) observeRemotePagedSets(themeId)
+    fun observePagedSets(connectivityAvailable: Boolean, themeId: Int? = null,
+                         coroutineScope: CoroutineScope) =
+            if (connectivityAvailable) observeRemotePagedSets(themeId, coroutineScope)
             else observeLocalPagedSets(themeId)
 
     private fun observeLocalPagedSets(themeId: Int? = null): LiveData<PagedList<LegoSet>> {
@@ -27,21 +27,24 @@ class LegoSetRepository private constructor(private val dao: LegoSetDao,
                 LegoSetPageDataSourceFactory.pagedListConfig()).build()
     }
 
-    private fun observeRemotePagedSets(themeId: Int? = null): LiveData<PagedList<LegoSet>> {
+    private fun observeRemotePagedSets(themeId: Int? = null, ioCoroutineScope: CoroutineScope)
+            : LiveData<PagedList<LegoSet>> {
         val dataSourceFactory = LegoSetPageDataSourceFactory(themeId, legoSetRemoteDataSource,
-                dao, CoroutineScope(Dispatchers.IO))
+                dao, ioCoroutineScope)
         return LivePagedListBuilder(dataSourceFactory,
                 LegoSetPageDataSourceFactory.pagedListConfig()).build()
     }
+
+    fun observeSet(id: String) = statusLiveData(
+            databaseQuery = { dao.getLegoSet(id) },
+            networkCall = { legoSetRemoteDataSource.fetchSet(id) },
+            saveCallResult = { dao.insert(it) })
+            .distinctUntilChanged()
 
     fun observeSetsByTheme(themeId: Int) = statusLiveData(
             databaseQuery = { dao.getLegoSets(themeId) },
             networkCall = { legoSetRemoteDataSource.fetchSets(1, PAGE_SIZE, themeId) },
             saveCallResult = { dao.insertAll(it.results) })
-
-    fun getLegoSet(plantId: String) = dao.getLegoSet(plantId)
-
-    fun getDistinctLegoSet(id: String) = getLegoSet(id).distinctUntilChanged()
 
     companion object {
 

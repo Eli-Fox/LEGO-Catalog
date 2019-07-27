@@ -40,7 +40,7 @@ class LegoSetAdapter : PagedListAdapter<LegoSet, LegoSetAdapter.ViewHolder>(Lego
 
     private fun createOnClickListener(id: String): View.OnClickListener {
         return View.OnClickListener {
-            val direction = LegoSetsFragmentDirections.actionPlantListFragmentToPlantDetailFragment(id)
+            val direction = LegoSetsFragmentDirections.actionToLegosetDetailFragment(id)
             it.findNavController().navigate(direction)
         }
     }

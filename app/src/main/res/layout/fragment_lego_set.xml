@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
-            name="viewModel"
-            type="com.elifox.legocatalog.legoset.ui.PlantDetailViewModel" />
+            name="legoSet"
+            type="com.elifox.legocatalog.legoset.data.LegoSet"/>
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -30,7 +29,7 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@{viewModel.plant.name}"
+                app:title="@{legoSet.name}"
                 app:toolbarId="@+id/toolbar">
 
                 <ImageView
@@ -40,7 +39,7 @@
                     android:contentDescription="@string/plant_detail_image_content_description"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    app:imageFromUrl="@{viewModel.plant.imageUrl}"
+                    app:imageFromUrl="@{legoSet.imageUrl}"
                     app:layout_collapseMode="parallax" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -67,7 +66,7 @@
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_normal"
                     android:layout_marginEnd="@dimen/margin_small"
-                    android:text="@{viewModel.plant.name}"
+                    android:text="@{legoSet.name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -83,7 +82,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/plant_name"
-                    app:wateringText="@{viewModel.plant.wateringInterval}"
+                    android:text="@{legoSet.url}"
                     tools:text="Watering needs: every 7 days" />
 
                 <TextView
@@ -98,8 +97,18 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/plant_watering"
-                    app:renderHtml="@{viewModel.plant.description}"
+                    android:text="@{legoSet.url}"
                     tools:text="Details about the plant" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/plant_description"
+                    tools:visibility="visible"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -113,7 +122,6 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             android:tint="@android:color/white"
-            app:isGone="@{viewModel.isPlanted}"
             app:layout_anchor="@id/plant_detail_scrollview"
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_plus" />

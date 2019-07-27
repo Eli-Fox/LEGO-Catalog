@@ -8,8 +8,8 @@ import com.elifox.legocatalog.garden.data.GardenPlantingRepository
 import com.elifox.legocatalog.garden.ui.GardenPlantingListViewModelFactory
 import com.elifox.legocatalog.legoset.data.LegoSetRemoteDataSource
 import com.elifox.legocatalog.legoset.data.LegoSetRepository
+import com.elifox.legocatalog.legoset.ui.LegoSetViewModelFactory
 import com.elifox.legocatalog.legoset.ui.LegoSetsViewModelFactory
-import com.elifox.legocatalog.legoset.ui.PlantDetailViewModelFactory
 import com.elifox.legocatalog.legotheme.data.LegoThemeRemoteDataSource
 import com.elifox.legocatalog.legotheme.data.LegoThemeRepository
 import com.elifox.legocatalog.legotheme.ui.LegoThemeViewModelFactory
@@ -54,11 +54,7 @@ object InjectorUtils {
         return LegoThemeViewModelFactory(repository)
     }
 
-    fun providePlantDetailViewModelFactory(
-        context: Context,
-        plantId: String
-    ): PlantDetailViewModelFactory {
-        return PlantDetailViewModelFactory(getLegoSetRepository(context),
-                getGardenPlantingRepository(context), plantId)
+    fun provideLegoSetViewModelFactory(context: Context, id: String): LegoSetViewModelFactory {
+        return LegoSetViewModelFactory(getLegoSetRepository(context), id)
     }
 }

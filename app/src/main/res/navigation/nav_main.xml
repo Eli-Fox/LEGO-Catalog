@@ -37,8 +37,8 @@
             android:defaultValue="@null"/>
 
         <action
-            android:id="@+id/action_plant_list_fragment_to_plant_detail_fragment"
-            app:destination="@id/plant_detail_fragment"
+            android:id="@+id/action_to_legoset_detail_fragment"
+            app:destination="@id/legoset_detail_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -46,12 +46,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/plant_detail_fragment"
-        android:name="com.elifox.legocatalog.legoset.ui.PlantDetailFragment"
-        android:label="@string/plant_details_title"
-        tools:layout="@layout/fragment_plant_detail">
+        android:id="@+id/legoset_detail_fragment"
+        android:name="com.elifox.legocatalog.legoset.ui.LegoSetFragment"
+        android:label="@string/legoset_details_title"
+        tools:layout="@layout/fragment_lego_set">
+
         <argument
-            android:name="plantId"
+            android:name="id"
             app:argType="string" />
     </fragment>
 

@@ -25,16 +25,20 @@ class LegoSetsFragment : Fragment() {
                 ConnectivityUtil.isConnected(context!!),
                 if (args.themeId == -1) null else args.themeId)
     }
-    private val adapter: LegoSetAdapter by lazy { LegoSetAdapter() }
-
-    private val linearLayoutManager: LinearLayoutManager by lazy { LinearLayoutManager(activity) }
-    private val gridLayoutManager: GridLayoutManager by lazy { GridLayoutManager(activity, SPAN_COUNT) }
-
-    private val linearDecoration: RecyclerView.ItemDecoration by lazy { VerticalItemDecoration(
-            resources.getDimension(R.dimen.margin_normal).toInt()) }
-    private val gridDecoration: RecyclerView.ItemDecoration by lazy { GridSpacingItemDecoration(
-            SPAN_COUNT, resources.getDimension(R.dimen.margin_grid).toInt()) }
     private lateinit var binding: FragmentLegosetsBinding
+
+    private val adapter: LegoSetAdapter by lazy { LegoSetAdapter() }
+    private lateinit var linearLayoutManager: LinearLayoutManager
+
+    private lateinit var gridLayoutManager: GridLayoutManager
+    private val linearDecoration: RecyclerView.ItemDecoration by lazy {
+        VerticalItemDecoration(
+                resources.getDimension(R.dimen.margin_normal).toInt())
+    }
+    private val gridDecoration: RecyclerView.ItemDecoration by lazy {
+        GridSpacingItemDecoration(
+                SPAN_COUNT, resources.getDimension(R.dimen.margin_grid).toInt())
+    }
 
     private var isLinearLayoutManager: Boolean = true
 
@@ -46,10 +50,12 @@ class LegoSetsFragment : Fragment() {
         binding = FragmentLegosetsBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
+        linearLayoutManager = LinearLayoutManager(activity)
+        gridLayoutManager = GridLayoutManager(activity, SPAN_COUNT)
         setLayoutManager()
         binding.recyclerView.adapter = adapter
-        args.themeName?.let { setTitle(it) }
 
+        args.themeName?.let { setTitle(it) }
         subscribeUi(adapter)
 
         setHasOptionsMenu(true)
