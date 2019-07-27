@@ -38,8 +38,7 @@ class LegoSetFragment : Fragment() {
                 inflater, R.layout.fragment_lego_set, container, false).apply {
             lifecycleOwner = this@LegoSetFragment
             fab.setOnClickListener { view ->
-                // TODO
-                Snackbar.make(view, R.string.added_plant_to_garden, Snackbar.LENGTH_LONG).show()
+                Snackbar.make(view, R.string.santa_claus_quote, Snackbar.LENGTH_LONG).show()
             }
         }
 

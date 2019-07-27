@@ -13,10 +13,10 @@
     <string name="legosets_title">Browse All Sets</string>
     <string name="legoset_details_title">Set details</string>
     <string name="navigation_drawer_header_content_description" translation_description="Content description for the image that is shown at the top of the navigation drawer.">Navigation drawer header logo</string>
-    <string name="added_plant_to_garden" translation_description="Confirmation text that is shown when a user adds a plant to their graden.">Added plant to garden</string>
+    <string name="santa_claus_quote">Santa Claus will consider this request</string>
     <string name="garden_empty" translation_description="Text that is shown on the 'My Garden' screen when no plants have been added to the user's garden">Your garden is empty</string>
     <string name="planted_date" translation_description="Text with placeholders that indicates when the plant was planted. Example: 'Sunflower planted on May 24, 2018'.">%1$s planted on %2$s</string>
-    <string name="menu_item_share_plant" translation_description="The label for the Share menu item">Share</string>
+    <string name="menu_item_share" translation_description="The label for the Share menu item">Share</string>
     <string name="share_text_plant" translation_description="The default messaged used when sharing a plant on SNS, etc.">Check out the %s plant in the Android Sunflower app</string>
 
     <!-- String plurals and their related prefix / suffix strings -->
