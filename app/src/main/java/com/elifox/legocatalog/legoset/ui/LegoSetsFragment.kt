@@ -14,6 +14,7 @@ import com.elifox.legocatalog.databinding.FragmentLegosetsBinding
 import com.elifox.legocatalog.di.InjectorUtils
 import com.elifox.legocatalog.ui.GridSpacingItemDecoration
 import com.elifox.legocatalog.ui.VerticalItemDecoration
+import com.elifox.legocatalog.ui.hide
 import com.elifox.legocatalog.ui.setTitle
 import com.elifox.legocatalog.util.ConnectivityUtil
 
@@ -77,9 +78,11 @@ class LegoSetsFragment : Fragment() {
         }
     }
 
-    // TODO first loading binding.progressBar.visibility = View.GONE
     private fun subscribeUi(adapter: LegoSetAdapter) {
-        viewModel.legoSets.observe(viewLifecycleOwner) { adapter.submitList(it) }
+        viewModel.legoSets.observe(viewLifecycleOwner) {
+            binding.progressBar.hide()
+            adapter.submitList(it)
+        }
     }
 
     private fun setLayoutManager() {
