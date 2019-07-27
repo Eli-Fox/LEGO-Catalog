@@ -26,5 +26,5 @@ interface LegoSetDao {
     fun getLegoSet(id: String): LiveData<LegoSet>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(plants: List<LegoSet>)
+    suspend fun insertAll(legoSets: List<LegoSet>)
 }

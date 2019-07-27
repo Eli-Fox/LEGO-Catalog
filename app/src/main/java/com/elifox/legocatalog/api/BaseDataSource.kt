@@ -8,12 +8,19 @@ import retrofit2.Response
  */
 abstract class BaseDataSource {
 
-    protected fun <T> getResult(response: Response<T>): Result<T> {
-        if (response.isSuccessful) {
-            val body = response.body()
-            if (body != null) return Result.success(body)
+    protected suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
+        try {
+            val response = call()
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (body != null) return Result.success(body)
+            }
+            return error(" ${response.code()} ${response.message()}")
+        } catch (e: Exception) {
+            return error(e.message!!)
         }
-        return Result.error("Network call has failed for a following reason:" +
-                " ${response.code()} ${response.message()}")
     }
+
+    private fun <T> error(message: String) =
+            Result.error<T>("Network call has failed for a following reason: $message")
 }

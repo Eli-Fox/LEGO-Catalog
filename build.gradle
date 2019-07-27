@@ -30,7 +30,6 @@ buildscript {
         uiAutomatorVersion = '2.2.0'
         workVersion = '2.1.0'
         pagingVersion = '2.1.0'
-        paginateVersion = '0.5.1'
         gsonVersion = '2.8.2'
         okhttp = '3.10.0'
         retrofit = '2.6.0'

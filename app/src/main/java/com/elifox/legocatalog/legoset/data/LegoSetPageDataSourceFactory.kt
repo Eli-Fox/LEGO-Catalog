@@ -7,12 +7,13 @@ import kotlinx.coroutines.CoroutineScope
 
 class LegoSetPageDataSourceFactory(private val themeId: Int? = null,
                                    private val dataSource: LegoSetRemoteDataSource,
+                                   private val dao: LegoSetDao,
                                    private val scope: CoroutineScope) : DataSource.Factory<Int, LegoSet>() {
 
     private val liveData = MutableLiveData<LegoSetPageDataSource>()
 
     override fun create(): DataSource<Int, LegoSet> {
-        val source = LegoSetPageDataSource(themeId, dataSource, scope)
+        val source = LegoSetPageDataSource(themeId, dataSource, dao, scope)
         liveData.postValue(source)
         return source
     }

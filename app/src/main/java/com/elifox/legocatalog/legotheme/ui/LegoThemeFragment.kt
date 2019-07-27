@@ -9,6 +9,8 @@ import com.elifox.legocatalog.R
 import com.elifox.legocatalog.data.Result
 import com.elifox.legocatalog.databinding.FragmentThemesBinding
 import com.elifox.legocatalog.di.InjectorUtils
+import com.elifox.legocatalog.util.hide
+import com.elifox.legocatalog.util.show
 import com.google.android.material.snackbar.Snackbar
 
 class LegoThemeFragment : Fragment() {
@@ -54,11 +56,10 @@ class LegoThemeFragment : Fragment() {
                     binding.progressBar.visibility = View.GONE
                     result.data?.let { adapter.submitList(it) }
                 }
-                Result.Status.LOADING -> binding.progressBar.visibility = View.VISIBLE
+                Result.Status.LOADING -> binding.progressBar.show()
                 Result.Status.ERROR -> {
-                    binding.progressBar.visibility = View.GONE
-                    Snackbar.make(binding.root, result.message!!,
-                            Snackbar.LENGTH_LONG).show()
+                    binding.progressBar.hide()
+                    Snackbar.make(binding.root, result.message!!, Snackbar.LENGTH_LONG).show()
                 }
             }
         })

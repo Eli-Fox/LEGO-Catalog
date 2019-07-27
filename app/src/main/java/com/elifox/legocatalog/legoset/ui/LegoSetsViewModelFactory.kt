@@ -12,9 +12,11 @@ import com.elifox.legocatalog.legoset.data.LegoSetRepository
  */
 class LegoSetsViewModelFactory(
         private val repository: LegoSetRepository,
+        private val connectivityAvailable: Boolean,
         private val themeId: Int?
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>) = LegoSetsViewModel(repository, themeId) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>) = LegoSetsViewModel(
+            repository, connectivityAvailable, themeId) as T
 }
