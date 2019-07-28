@@ -1,6 +1,6 @@
 package com.elifox.legocatalog.legotheme.data
 
-import com.elifox.legocatalog.data.statusLiveData
+import com.elifox.legocatalog.data.resultLiveData
 
 /**
  * Repository module for handling data operations.
@@ -8,7 +8,7 @@ import com.elifox.legocatalog.data.statusLiveData
 class LegoThemeRepository private constructor(private val dao: LegoThemeDao,
                                               private val remoteSource: LegoThemeRemoteDataSource) {
 
-    val themes = statusLiveData(
+    val themes = resultLiveData(
             databaseQuery = { dao.getLegoThemes() },
             networkCall = { remoteSource.fetchData() },
             // TODO play with theme content

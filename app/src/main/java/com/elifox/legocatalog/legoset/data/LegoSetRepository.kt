@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.distinctUntilChanged
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.elifox.legocatalog.data.statusLiveData
+import com.elifox.legocatalog.data.resultLiveData
 import kotlinx.coroutines.CoroutineScope
 
 /**
@@ -35,13 +35,13 @@ class LegoSetRepository private constructor(private val dao: LegoSetDao,
                 LegoSetPageDataSourceFactory.pagedListConfig()).build()
     }
 
-    fun observeSet(id: String) = statusLiveData(
+    fun observeSet(id: String) = resultLiveData(
             databaseQuery = { dao.getLegoSet(id) },
             networkCall = { legoSetRemoteDataSource.fetchSet(id) },
             saveCallResult = { dao.insert(it) })
             .distinctUntilChanged()
 
-    fun observeSetsByTheme(themeId: Int) = statusLiveData(
+    fun observeSetsByTheme(themeId: Int) = resultLiveData(
             databaseQuery = { dao.getLegoSets(themeId) },
             networkCall = { legoSetRemoteDataSource.fetchSets(1, PAGE_SIZE, themeId) },
             saveCallResult = { dao.insertAll(it.results) })

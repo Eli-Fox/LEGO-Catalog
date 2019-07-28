@@ -10,9 +10,6 @@ import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.elifox.legocatalog.garden.data.GardenPlanting
-import com.elifox.legocatalog.garden.data.GardenPlantingDao
-import com.elifox.legocatalog.garden.data.Plant
 import com.elifox.legocatalog.legoset.data.LegoSet
 import com.elifox.legocatalog.legoset.data.LegoSetDao
 import com.elifox.legocatalog.legotheme.data.LegoTheme
@@ -23,13 +20,10 @@ import com.elifox.legocatalog.worker.SeedDatabaseWorker
  * The Room database for this app
  */
 @Database(entities = [LegoTheme::class,
-                      LegoSet::class,
-                      GardenPlanting::class,
-                      Plant::class],
+                      LegoSet::class],
         version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun gardenPlantingDao(): GardenPlantingDao
     abstract fun legoSetDao(): LegoSetDao
     abstract fun legoThemeDao(): LegoThemeDao
 

@@ -1,10 +1,7 @@
 package com.elifox.legocatalog.legoset.ui
 
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.*
-import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,6 +16,7 @@ import com.elifox.legocatalog.legoset.data.LegoSet
 import com.elifox.legocatalog.ui.hide
 import com.elifox.legocatalog.ui.setTitle
 import com.elifox.legocatalog.ui.show
+import com.elifox.legocatalog.util.intentShareText
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -27,7 +25,7 @@ import com.google.android.material.snackbar.Snackbar
 class LegoSetFragment : Fragment() {
 
     private val args: LegoSetFragmentArgs by navArgs()
-    private var legoSetName: String = "Set"
+    private lateinit var set: LegoSet
 
     private val viewModel: LegoSetViewModel by viewModels {
         InjectorUtils.provideLegoSetViewModelFactory(requireActivity(), args.id)
@@ -61,21 +59,7 @@ class LegoSetFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_share -> {
-                val shareIntent = ShareCompat.IntentBuilder.from(activity)
-                        .setText(getString(R.string.share_lego_set, legoSetName))
-                        .setType("text/plain")
-                        .createChooserIntent()
-                        .apply {
-                            // https://android-developers.googleblog.com/2012/02/share-with-intents.html
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                // If we're on Lollipop, we can open the intent as a document
-                                addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-                            } else {
-                                // Else, we will use the old CLEAR_WHEN_TASK_RESET flag
-                                addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
-                            }
-                        }
-                startActivity(shareIntent)
+                intentShareText(activity!!, getString(R.string.share_lego_set, set.name, set.url ?: ""))
                 return true
             }
             else -> super.onOptionsItemSelected(item)
@@ -92,7 +76,7 @@ class LegoSetFragment : Fragment() {
                 Result.Status.LOADING -> binding.progressBar.show()
                 Result.Status.ERROR -> {
                     binding.progressBar.hide()
-                    //Snackbar.make(binding.coordinatorLayout, result.message!!, Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(binding.coordinatorLayout, result.message!!, Snackbar.LENGTH_LONG).show()
                 }
             }
         })
@@ -105,7 +89,7 @@ class LegoSetFragment : Fragment() {
             binding.name.text = name
             binding.year.text = getString(R.string.year, year ?: 0)
             binding.numParts.text = getString(R.string.number_of_parts, numParts ?: 0)
-            legoSetName = name
+            set = legoSet
         }
     }
 }

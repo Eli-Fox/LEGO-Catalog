@@ -4,8 +4,6 @@ package com.elifox.legocatalog.di
 
 import android.content.Context
 import com.elifox.legocatalog.data.AppDatabase
-import com.elifox.legocatalog.garden.data.GardenPlantingRepository
-import com.elifox.legocatalog.garden.ui.GardenPlantingListViewModelFactory
 import com.elifox.legocatalog.legoset.data.LegoSetRemoteDataSource
 import com.elifox.legocatalog.legoset.data.LegoSetRepository
 import com.elifox.legocatalog.legoset.ui.LegoSetViewModelFactory
@@ -29,18 +27,6 @@ object InjectorUtils {
         return LegoThemeRepository.getInstance(
                 AppDatabase.getInstance(context.applicationContext).legoThemeDao(),
                 LegoThemeRemoteDataSource(AppModule().legoService()))
-    }
-
-    private fun getGardenPlantingRepository(context: Context): GardenPlantingRepository {
-        return GardenPlantingRepository.getInstance(
-                AppDatabase.getInstance(context.applicationContext).gardenPlantingDao())
-    }
-
-    fun provideGardenPlantingListViewModelFactory(
-        context: Context
-    ): GardenPlantingListViewModelFactory {
-        val repository = getGardenPlantingRepository(context)
-        return GardenPlantingListViewModelFactory(repository)
     }
 
     fun provideLegoSetsViewModelFactory(context: Context, connectivityAvailable: Boolean,
