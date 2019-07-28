@@ -29,5 +29,5 @@ abstract class ViewModelModule {
     abstract fun bindLegoSetViewModel(viewModel: LegoSetViewModel): ViewModel
 
     @Binds
-    abstract fun bindViewModelFactory(factory: GithubViewModelFactory): ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 }

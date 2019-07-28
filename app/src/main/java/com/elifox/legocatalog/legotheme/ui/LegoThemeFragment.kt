@@ -5,28 +5,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.elifox.legocatalog.R
 import com.elifox.legocatalog.data.Result
 import com.elifox.legocatalog.databinding.FragmentThemesBinding
-import com.elifox.legocatalog.di.InjectorUtils
+import com.elifox.legocatalog.di.Injectable
+import com.elifox.legocatalog.di.injectViewModel
 import com.elifox.legocatalog.ui.VerticalItemDecoration
 import com.elifox.legocatalog.ui.hide
 import com.elifox.legocatalog.ui.show
 import com.google.android.material.snackbar.Snackbar
+import javax.inject.Inject
 
-class LegoThemeFragment : Fragment() {
+class LegoThemeFragment : Fragment(), Injectable {
 
-    private val viewModel: LegoThemeViewModel by viewModels {
-        InjectorUtils.provideLegoThemeViewModelFactory(requireContext())
-    }
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: LegoThemeViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        viewModel = injectViewModel(viewModelFactory)
+
         val binding = FragmentThemesBinding.inflate(inflater, container, false)
         context ?: return binding.root
 

@@ -5,14 +5,15 @@ import com.elifox.legocatalog.legoset.data.LegoSetRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
+import javax.inject.Inject
 
 /**
  * The ViewModel for [LegoSetsFragment].
  */
-class LegoSetsViewModel internal constructor(private val repository: LegoSetRepository,
-                                             private val connectivityAvailable: Boolean,
-                                             private val themeId: Int? = null) : ViewModel() {
+class LegoSetsViewModel @Inject constructor(private val repository: LegoSetRepository) : ViewModel() {
 
+    var connectivityAvailable: Boolean = false
+    var themeId: Int? = null
 
     private val ioCoroutineScope = CoroutineScope(Dispatchers.IO)
 

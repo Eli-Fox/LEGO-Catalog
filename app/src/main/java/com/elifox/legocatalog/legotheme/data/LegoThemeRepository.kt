@@ -1,11 +1,14 @@
 package com.elifox.legocatalog.legotheme.data
 
 import com.elifox.legocatalog.data.resultLiveData
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Repository module for handling data operations.
  */
-class LegoThemeRepository private constructor(private val dao: LegoThemeDao,
+@Singleton
+class LegoThemeRepository @Inject constructor(private val dao: LegoThemeDao,
                                               private val remoteSource: LegoThemeRemoteDataSource) {
 
     val themes = resultLiveData(
@@ -13,16 +16,4 @@ class LegoThemeRepository private constructor(private val dao: LegoThemeDao,
             networkCall = { remoteSource.fetchData() },
             saveCallResult = { dao.insertAll(it.results) })
 
-    companion object {
-
-        // For Singleton instantiation
-        @Volatile
-        private var instance: LegoThemeRepository? = null
-
-        fun getInstance(dao: LegoThemeDao, legoSetRemoteDataSource: LegoThemeRemoteDataSource) =
-                instance ?: synchronized(this) {
-                    instance
-                            ?: LegoThemeRepository(dao, legoSetRemoteDataSource).also { instance = it }
-                }
-    }
 }

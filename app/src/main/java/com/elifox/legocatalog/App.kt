@@ -2,7 +2,7 @@ package com.elifox.legocatalog
 
 import android.app.Activity
 import android.app.Application
-import com.android.example.github.di.AppInjector
+import com.elifox.legocatalog.di.AppInjector
 import com.elifox.legocatalog.util.CrashReportingTree
 import com.facebook.stetho.Stetho
 import dagger.android.DispatchingAndroidInjector

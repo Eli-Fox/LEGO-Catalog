@@ -1,17 +1,12 @@
 package com.elifox.legocatalog.di
 
 import android.app.Application
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import com.android.example.github.di.ViewModelModule
 import com.elifox.legocatalog.BuildConfig
 import com.elifox.legocatalog.api.AuthInterceptor
 import com.elifox.legocatalog.api.LegoService
 import com.elifox.legocatalog.data.AppDatabase
-import com.elifox.legocatalog.worker.SeedDatabaseWorker
+import com.elifox.legocatalog.legoset.data.LegoSetRemoteDataSource
+import com.elifox.legocatalog.legotheme.data.LegoThemeRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -24,16 +19,21 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideLegoService(
-            okhttpClient: OkHttpClient,
+    fun provideLegoService(@LegoAPI okhttpClient: OkHttpClient,
             converterFactory: GsonConverterFactory
-    ): LegoService {
-        return createRetrofit(
-                okhttpClient,
-                converterFactory
-        ).create(LegoService::class.java)
-    }
+    ) = provideService(okhttpClient, converterFactory, LegoService::class.java)
 
+    @Singleton
+    @Provides
+    fun provideLegoSetRemoteDataSource(legoService: LegoService)
+            = LegoSetRemoteDataSource(legoService)
+
+    @Singleton
+    @Provides
+    fun provideLegoThemeRemoteDataSource(legoService: LegoService)
+            = LegoThemeRemoteDataSource(legoService)
+
+    @LegoAPI
     @Provides
     fun providePrivateOkHttpClient(
             upstreamClient: OkHttpClient
@@ -44,16 +44,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideDb(app: Application) =
-            Room.databaseBuilder(app, AppDatabase::class.java, "legocatalog-db")
-                    .addCallback(object : RoomDatabase.Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                            val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
-                            WorkManager.getInstance(app).enqueue(request)
-                        }
-                    })
-                    .build()
+    fun provideDb(app: Application) = AppDatabase.getInstance(app)
 
     @Singleton
     @Provides
@@ -73,5 +64,10 @@ class AppModule {
                 .client(okhttpClient)
                 .addConverterFactory(converterFactory)
                 .build()
+    }
+
+    private fun <T> provideService(okhttpClient: OkHttpClient,
+            converterFactory: GsonConverterFactory, clazz: Class<T>): T {
+        return createRetrofit(okhttpClient, converterFactory).create(clazz)
     }
 }

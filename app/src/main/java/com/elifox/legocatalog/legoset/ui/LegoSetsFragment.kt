@@ -3,7 +3,7 @@ package com.elifox.legocatalog.legoset.ui
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,23 +11,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elifox.legocatalog.R
 import com.elifox.legocatalog.databinding.FragmentLegosetsBinding
-import com.elifox.legocatalog.di.InjectorUtils
+import com.elifox.legocatalog.di.Injectable
+import com.elifox.legocatalog.di.injectViewModel
 import com.elifox.legocatalog.ui.GridSpacingItemDecoration
 import com.elifox.legocatalog.ui.VerticalItemDecoration
 import com.elifox.legocatalog.ui.hide
 import com.elifox.legocatalog.ui.setTitle
 import com.elifox.legocatalog.util.ConnectivityUtil
+import javax.inject.Inject
 
-class LegoSetsFragment : Fragment() {
+class LegoSetsFragment : Fragment(), Injectable {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: LegoSetsViewModel
 
     private val args: LegoSetsFragmentArgs by navArgs()
-    private val viewModel: LegoSetsViewModel by viewModels {
-        InjectorUtils.provideLegoSetsViewModelFactory(requireContext(),
-                ConnectivityUtil.isConnected(context!!),
-                if (args.themeId == -1) null else args.themeId)
-    }
-    private lateinit var binding: FragmentLegosetsBinding
 
+    private lateinit var binding: FragmentLegosetsBinding
     private val adapter: LegoSetAdapter by lazy { LegoSetAdapter() }
     private lateinit var linearLayoutManager: LinearLayoutManager
 
@@ -48,6 +49,10 @@ class LegoSetsFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        viewModel = injectViewModel(viewModelFactory)
+        viewModel.connectivityAvailable = ConnectivityUtil.isConnected(context!!)
+        viewModel.themeId = if (args.themeId == -1) null else args.themeId
+
         binding = FragmentLegosetsBinding.inflate(inflater, container, false)
         context ?: return binding.root
 

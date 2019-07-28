@@ -6,11 +6,14 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.elifox.legocatalog.data.resultLiveData
 import kotlinx.coroutines.CoroutineScope
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Repository module for handling data operations.
  */
-class LegoSetRepository private constructor(private val dao: LegoSetDao,
+@Singleton
+class LegoSetRepository @Inject constructor(private val dao: LegoSetDao,
                                             private val legoSetRemoteDataSource: LegoSetRemoteDataSource) {
 
     fun observePagedSets(connectivityAvailable: Boolean, themeId: Int? = null,

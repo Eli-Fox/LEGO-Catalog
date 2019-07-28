@@ -4,37 +4,41 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.elifox.legocatalog.R
 import com.elifox.legocatalog.binding.bindImageFromUrl
 import com.elifox.legocatalog.data.Result
 import com.elifox.legocatalog.databinding.FragmentLegoSetBinding
-import com.elifox.legocatalog.di.InjectorUtils
+import com.elifox.legocatalog.di.Injectable
+import com.elifox.legocatalog.di.injectViewModel
 import com.elifox.legocatalog.legoset.data.LegoSet
 import com.elifox.legocatalog.ui.hide
 import com.elifox.legocatalog.ui.setTitle
 import com.elifox.legocatalog.ui.show
 import com.elifox.legocatalog.util.intentShareText
 import com.google.android.material.snackbar.Snackbar
+import javax.inject.Inject
 
 /**
  * A fragment representing a single LegoSet detail screen.
  */
-class LegoSetFragment : Fragment() {
+class LegoSetFragment : Fragment(), Injectable {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var viewModel: LegoSetViewModel
 
     private val args: LegoSetFragmentArgs by navArgs()
     private lateinit var set: LegoSet
-
-    private val viewModel: LegoSetViewModel by viewModels {
-        InjectorUtils.provideLegoSetViewModelFactory(requireActivity(), args.id)
-    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?): View? {
+        viewModel = injectViewModel(viewModelFactory)
+        viewModel.id = args.id
 
         val binding = DataBindingUtil.inflate<FragmentLegoSetBinding>(
                 inflater, R.layout.fragment_lego_set, container, false).apply {

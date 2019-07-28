@@ -1,7 +1,6 @@
 package com.elifox.legocatalog.di
 
 import android.app.Application
-import com.android.example.github.di.MainActivityModule
 import com.elifox.legocatalog.App
 import dagger.BindsInstance
 import dagger.Component
@@ -15,7 +14,6 @@ import javax.inject.Singleton
         AppModule::class,
         MainActivityModule::class]
 )
-
 interface AppComponent {
     @Component.Builder
     interface Builder {

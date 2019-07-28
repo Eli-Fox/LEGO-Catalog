@@ -1,6 +1,5 @@
 package com.elifox.legocatalog.api
 
-
 import com.google.gson.annotations.SerializedName
 
 data class ResultsResponse<T>(

@@ -4,11 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import androidx.paging.PagedList
 import kotlinx.coroutines.CoroutineScope
+import javax.inject.Inject
 
-class LegoSetPageDataSourceFactory(private val themeId: Int? = null,
-                                   private val dataSource: LegoSetRemoteDataSource,
-                                   private val dao: LegoSetDao,
-                                   private val scope: CoroutineScope) : DataSource.Factory<Int, LegoSet>() {
+class LegoSetPageDataSourceFactory @Inject constructor(
+        private val themeId: Int? = null,
+        private val dataSource: LegoSetRemoteDataSource,
+        private val dao: LegoSetDao,
+        private val scope: CoroutineScope) : DataSource.Factory<Int, LegoSet>() {
 
     private val liveData = MutableLiveData<LegoSetPageDataSource>()
 

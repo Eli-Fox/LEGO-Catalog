@@ -17,9 +17,8 @@ import dagger.android.support.HasSupportFragmentInjector
 object AppInjector {
 
     fun init(application: App) {
-        // TODO
-        //DaggerAppComponent.builder().application(application)
-        //    .build().inject(application)
+        DaggerAppComponent.builder().application(application)
+            .build().inject(application)
         application
             .registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
                 override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {

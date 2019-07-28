@@ -6,14 +6,16 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * Data source for lego sets pagination via paging library
  */
-class LegoSetPageDataSource(private val themeId: Int? = null,
-                            private val dataSource: LegoSetRemoteDataSource,
-                            private val dao: LegoSetDao,
-                            private val scope: CoroutineScope) : PageKeyedDataSource<Int, LegoSet>() {
+class LegoSetPageDataSource @Inject constructor(
+        private val themeId: Int? = null,
+        private val dataSource: LegoSetRemoteDataSource,
+        private val dao: LegoSetDao,
+        private val scope: CoroutineScope) : PageKeyedDataSource<Int, LegoSet>() {
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, LegoSet>) {
         fetchData(1, params.requestedLoadSize) {
@@ -49,7 +51,7 @@ class LegoSetPageDataSource(private val themeId: Int? = null,
     }
 
     private fun getJobErrorHandler() = CoroutineExceptionHandler { _, e ->
-        postError(e.message ?:  e.toString())
+        postError(e.message ?: e.toString())
     }
 
     private fun postError(message: String) {
