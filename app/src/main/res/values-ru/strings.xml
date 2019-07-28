@@ -1,11 +1,11 @@
 <resources>
 
     <!-- Translatable resources -->
-    <string name="filter" translation_description="Common Filter">Фильтер</string>
+    <string name="filter" translation_description="Common Filter">Фильтр</string>
     <string name="grid" translation_description="Common Filter">Переключение между сеткой и листом</string>
-    <string name="legothemes_title">Просмотреть по темам</string>
-    <string name="legosets_title">Просмотреть все наборы</string>
-    <string name="legoset_details_title">Подробности о наборе</string>
+    <string name="legothemes_title">Категории</string>
+    <string name="legosets_title">Все наборы</string>
+    <string name="legoset_details_title">О наборе</string>
     <string name="navigation_drawer_header_content_description">Логотип меню</string>
     <string name="santa_claus_quote">Дед Мороз занесет вам этот набор на Новый Год</string>
     <string name="menu_item_share" translation_description="The label for the Share menu item">Поделится</string>
