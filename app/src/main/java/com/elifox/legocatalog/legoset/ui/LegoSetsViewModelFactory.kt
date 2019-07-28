@@ -10,6 +10,7 @@ import com.elifox.legocatalog.legoset.data.LegoSetRepository
 /**
  * Factory for creating a [LegoSetsViewModel] with a constructor that takes a [LegoSetRepository].
  */
+// TODO
 class LegoSetsViewModelFactory(
         private val repository: LegoSetRepository,
         private val connectivityAvailable: Boolean,

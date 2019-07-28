@@ -34,6 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
@@ -58,10 +59,19 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
-    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
 
+    // Tools
+    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
     implementation "com.facebook.stetho:stetho:$rootProject.stetho"
     implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho"
+
+    // Dagger
+    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+
 
     // Networking
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"

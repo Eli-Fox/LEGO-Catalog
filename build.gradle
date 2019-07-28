@@ -35,6 +35,7 @@ buildscript {
         retrofit = '2.6.0'
         stetho = '1.5.1'
         timberVersion = '4.7.1'
+        daggerVersion = '2.23.2'
     }
 
     repositories {
