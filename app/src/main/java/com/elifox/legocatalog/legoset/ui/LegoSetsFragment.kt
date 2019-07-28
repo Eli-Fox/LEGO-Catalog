@@ -70,12 +70,14 @@ class LegoSetsFragment : Fragment(), Injectable {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_grid, menu)
+        setDataRepresentationIcon(menu.findItem(R.id.grid))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.grid -> {
                 isLinearLayoutManager = !isLinearLayoutManager
+                setDataRepresentationIcon(item)
                 setLayoutManager()
                 true
             }
@@ -111,6 +113,11 @@ class LegoSetsFragment : Fragment(), Injectable {
         }
 
         recyclerView.scrollToPosition(scrollPosition)
+    }
+
+    private fun setDataRepresentationIcon(item: MenuItem) {
+        item.setIcon(if (isLinearLayoutManager)
+            R.drawable.ic_grid_list_24dp else R.drawable.ic_list_white_24dp)
     }
 
     companion object {
