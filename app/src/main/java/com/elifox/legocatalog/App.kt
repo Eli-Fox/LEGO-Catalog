@@ -17,7 +17,9 @@
 package com.elifox.legocatalog
 
 import android.app.Application
+import com.elifox.legocatalog.util.CrashReportingTree
 import com.facebook.stetho.Stetho
+import timber.log.Timber
 
 // TODO Dagger2
 //class App : Application(), HasActivityInjector {
@@ -30,8 +32,9 @@ class App : Application() {
 
         if (BuildConfig.DEBUG) Stetho.initializeWithDefaults(this)
 
-        // TODO Timber logging
-        //if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+        else Timber.plant(CrashReportingTree())
+
         //AppInjector.init(this)
     }
 

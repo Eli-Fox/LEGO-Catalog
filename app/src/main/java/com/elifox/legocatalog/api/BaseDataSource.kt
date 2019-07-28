@@ -2,6 +2,7 @@ package com.elifox.legocatalog.api
 
 import com.elifox.legocatalog.data.Result
 import retrofit2.Response
+import timber.log.Timber
 
 /**
  * Abstract Base Data source class with error handling
@@ -21,6 +22,10 @@ abstract class BaseDataSource {
         }
     }
 
-    private fun <T> error(message: String) =
-            Result.error<T>("Network call has failed for a following reason: $message")
+    private fun <T> error(message: String): Result<T> {
+        Timber.e(message)
+        return Result.error("Network call has failed for a following reason: $message")
+    }
+
 }
+

@@ -1,11 +1,11 @@
 package com.elifox.legocatalog.legoset.data
 
-import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import com.elifox.legocatalog.data.Result
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * Data source for lego sets pagination via paging library
@@ -53,8 +53,8 @@ class LegoSetPageDataSource(private val themeId: Int? = null,
     }
 
     private fun postError(message: String) {
-        // TODO timber
-        Log.e(LegoSetPageDataSource::class.java.simpleName, "An error happened: $message")
+        Timber.e("An error happened: $message")
+        // TODO network error handling
         //networkState.postValue(NetworkState.FAILED)
     }
 

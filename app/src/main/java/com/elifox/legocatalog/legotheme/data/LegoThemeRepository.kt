@@ -11,12 +11,7 @@ class LegoThemeRepository private constructor(private val dao: LegoThemeDao,
     val themes = resultLiveData(
             databaseQuery = { dao.getLegoThemes() },
             networkCall = { remoteSource.fetchData() },
-            // TODO play with theme content
             saveCallResult = { dao.insertAll(it.results) })
-
-    // TODO filtered
-    //fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
-    //        dao.getPlantsWithGrowZoneNumber(growZoneNumber)
 
     companion object {
 

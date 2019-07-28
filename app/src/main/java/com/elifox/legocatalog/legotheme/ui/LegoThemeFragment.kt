@@ -2,7 +2,6 @@ package com.elifox.legocatalog.legotheme.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -42,21 +41,6 @@ class LegoThemeFragment : Fragment() {
         return binding.root
     }
 
-    // TODO filter
-    //override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-    //    inflater.inflate(R.menu.menu_filter, menu)
-    //}
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.filter_zone -> {
-                updateData()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
     private fun subscribeUi(binding: FragmentThemesBinding, adapter: LegoThemeAdapter) {
         viewModel.legoThemes.observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
@@ -71,17 +55,5 @@ class LegoThemeFragment : Fragment() {
                 }
             }
         })
-    }
-
-
-    // TODO filter
-    private fun updateData() {
-        with(viewModel) {
-            if (isFiltered()) {
-                clearGrowZoneNumber()
-            } else {
-                setGrowZoneNumber(9)
-            }
-        }
     }
 }
