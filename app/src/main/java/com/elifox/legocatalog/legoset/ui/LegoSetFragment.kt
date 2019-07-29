@@ -17,6 +17,7 @@ import com.elifox.legocatalog.legoset.data.LegoSet
 import com.elifox.legocatalog.ui.hide
 import com.elifox.legocatalog.ui.setTitle
 import com.elifox.legocatalog.ui.show
+import com.elifox.legocatalog.util.intentOpenWebsite
 import com.elifox.legocatalog.util.intentShareText
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
@@ -43,9 +44,7 @@ class LegoSetFragment : Fragment(), Injectable {
         val binding = DataBindingUtil.inflate<FragmentLegoSetBinding>(
                 inflater, R.layout.fragment_lego_set, container, false).apply {
             lifecycleOwner = this@LegoSetFragment
-            fab.setOnClickListener { view ->
-                Snackbar.make(view, R.string.santa_claus_quote, Snackbar.LENGTH_LONG).show()
-            }
+            fab.setOnClickListener { _ -> set.url?.let { intentOpenWebsite(activity!!,it) } }
         }
 
         subscribeUi(binding)

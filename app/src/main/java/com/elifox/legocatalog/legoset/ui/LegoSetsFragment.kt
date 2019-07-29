@@ -42,7 +42,7 @@ class LegoSetsFragment : Fragment(), Injectable {
                 SPAN_COUNT, resources.getDimension(R.dimen.margin_grid).toInt())
     }
 
-    private var isLinearLayoutManager: Boolean = true
+    private var isLinearLayoutManager: Boolean = false
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -69,13 +69,13 @@ class LegoSetsFragment : Fragment(), Injectable {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_grid, menu)
-        setDataRepresentationIcon(menu.findItem(R.id.grid))
+        inflater.inflate(R.menu.menu_list_representation, menu)
+        setDataRepresentationIcon(menu.findItem(R.id.list))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.grid -> {
+            R.id.list -> {
                 isLinearLayoutManager = !isLinearLayoutManager
                 setDataRepresentationIcon(item)
                 setLayoutManager()

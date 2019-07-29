@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/grid"
-        android:icon="@drawable/ic_grid_list_24dp"
+    <item android:id="@+id/list"
+        android:icon="@drawable/ic_list_white_24dp"
         app:showAsAction="always"
         android:title="@string/grid"/>
 

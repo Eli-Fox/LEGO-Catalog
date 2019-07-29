@@ -2,6 +2,7 @@ package com.elifox.legocatalog.util
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.core.app.ShareCompat
 
@@ -25,4 +26,10 @@ fun intentShareText(activity: Activity, text: String) {
                 }
             }
     activity.startActivity(shareIntent)
+}
+
+fun intentOpenWebsite(activity: Activity, url: String) {
+    val openURL = Intent(Intent.ACTION_VIEW)
+    openURL.data = Uri.parse(url)
+    activity.startActivity(openURL)
 }
