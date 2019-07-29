@@ -13,13 +13,13 @@ import androidx.room.Query
 @Dao
 interface LegoSetDao {
 
-    @Query("SELECT * FROM sets WHERE themeId = :themeId ORDER BY name")
+    @Query("SELECT * FROM sets WHERE themeId = :themeId ORDER BY year DESC")
     fun getLegoSets(themeId: Int): LiveData<List<LegoSet>>
 
-    @Query("SELECT * FROM sets WHERE themeId = :themeId ORDER BY name")
+    @Query("SELECT * FROM sets WHERE themeId = :themeId ORDER BY year DESC")
     fun getPagedLegoSetsByTheme(themeId: Int): DataSource.Factory<Int, LegoSet>
 
-    @Query("SELECT * FROM sets ORDER BY name")
+    @Query("SELECT * FROM sets ORDER BY year DESC")
     fun getPagedLegoSets(): DataSource.Factory<Int, LegoSet>
 
     @Query("SELECT * FROM sets WHERE id = :id")

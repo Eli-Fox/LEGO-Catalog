@@ -9,6 +9,6 @@ import javax.inject.Inject
  */
 class LegoThemeRemoteDataSource @Inject constructor(private val service: LegoService) : BaseDataSource() {
 
-    suspend fun fetchData() = getResult { service.getThemes(1, 1000, "name") }
+    suspend fun fetchData() = getResult { service.getThemes(1, 1000, "-id") }
 
 }
