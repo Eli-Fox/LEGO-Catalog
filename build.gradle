@@ -36,7 +36,6 @@ buildscript {
         coreTestingVersion = '2.0.0'
         jacocoVersion = '0.8.4'
         runnerVersion = '1.0.1'
-        truthVersion = '0.42'
         testExtJunit = '1.1.0'
         uiAutomatorVersion = '2.2.0'
         mockitoVersion = "2.25.0"

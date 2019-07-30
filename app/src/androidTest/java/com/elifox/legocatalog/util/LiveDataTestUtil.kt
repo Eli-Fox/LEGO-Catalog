@@ -1,5 +1,3 @@
-
-
 package com.elifox.legocatalog.util
 
 import androidx.lifecycle.LiveData
