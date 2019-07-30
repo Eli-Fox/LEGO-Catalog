@@ -1,0 +1,97 @@
+{
+  "count": 9,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "set_num": "30212-1",
+      "name": "Mirkwood Elf Guard",
+      "year": 2012,
+      "theme_id": 563,
+      "num_parts": 27,
+      "set_img_url": "https://cdn.rebrickable.com/media/sets/30212-1.jpg",
+      "set_url": "https://rebrickable.com/sets/30212-1/mirkwood-elf-guard/",
+      "last_modified_dt": "2016-04-23T12:25:04.325081Z"
+    },
+    {
+      "set_num": "30213-1",
+      "name": "Gandalf at Dol Guldur",
+      "year": 2012,
+      "theme_id": 563,
+      "num_parts": 31,
+      "set_img_url": "https://cdn.rebrickable.com/media/sets/30213-1.jpg",
+      "set_url": "https://rebrickable.com/sets/30213-1/gandalf-at-dol-guldur/",
+      "last_modified_dt": "2015-02-02T20:00:09.185491Z"
+    },
+    {
+      "set_num": "79000-1",
+      "name": "Riddles for The Ring",
+      "year": 2012,
+      "theme_id": 563,
+      "num_parts": 105,
+      "set_img_url": "https://cdn.rebrickable.com/media/sets/79000-1.jpg",
+      "set_url": "https://rebrickable.com/sets/79000-1/riddles-for-the-ring/",
+      "last_modified_dt": "2014-09-07T14:51:28.831117Z"
+    },
+    {
+      "set_num": "79001-1",
+      "name": "Escape from Mirkwood Spiders",
+      "year": 2012,
+      "theme_id": 563,
+      "num_parts": 298,
+      "set_img_url": "https://cdn.rebrickable.com/media/sets/79001-1.jpg",
+      "set_url": "https://rebrickable.com/sets/79001-1/escape-from-mirkwood-spiders/",
+      "last_modified_dt": "2016-05-29T00:33:26.653595Z"
+    },
+    {
+      "set_num": "79002-1",
+      "name": "Attack of the Wargs",
+      "year": 2012,
+      "theme_id": 563,
+      "num_parts": 400,
+      "set_img_url": "https://cdn.rebrickable.com/media/sets/79002-1.jpg",
+      "set_url": "https://rebrickable.com/sets/79002-1/attack-of-the-wargs/",
+      "last_modified_dt": "2016-05-29T00:33:26.961461Z"
+    },
+    {
+      "set_num": "79003-1",
+      "name": "An Unexpected Gathering",
+      "year": 2012,
+      "theme_id": 563,
+      "num_parts": 667,
+      "set_img_url": "https://cdn.rebrickable.com/media/sets/79003-1.jpg",
+      "set_url": "https://rebrickable.com/sets/79003-1/an-unexpected-gathering/",
+      "last_modified_dt": "2016-05-29T00:33:28.296351Z"
+    },
+    {
+      "set_num": "79004-1",
+      "name": "Barrel Escape",
+      "year": 2012,
+      "theme_id": 563,
+      "num_parts": 333,
+      "set_img_url": "https://cdn.rebrickable.com/media/sets/79004-1.jpg",
+      "set_url": "https://rebrickable.com/sets/79004-1/barrel-escape/",
+      "last_modified_dt": "2016-05-29T00:33:28.875550Z"
+    },
+    {
+      "set_num": "79010-1",
+      "name": "The Goblin King Battle",
+      "year": 2012,
+      "theme_id": 563,
+      "num_parts": 838,
+      "set_img_url": "https://cdn.rebrickable.com/media/sets/79010-1.jpg",
+      "set_url": "https://rebrickable.com/sets/79010-1/the-goblin-king-battle/",
+      "last_modified_dt": "2016-05-29T00:33:30.450255Z"
+    },
+    {
+      "set_num": "comcon033-1",
+      "name": "Micro Scale Bag End - San Diego Comic-Con 2013 Exclusive",
+      "year": 2013,
+      "theme_id": 563,
+      "num_parts": 130,
+      "set_img_url": "https://cdn.rebrickable.com/media/sets/comcon033-1.jpg",
+      "set_url": "https://rebrickable.com/sets/comcon033-1/micro-scale-bag-end-san-diego-comic-con-2013-exclusive/",
+      "last_modified_dt": "2016-05-29T00:35:12.111144Z"
+    }
+  ]
+}

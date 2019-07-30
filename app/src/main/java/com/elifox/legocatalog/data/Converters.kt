@@ -1,5 +1,3 @@
-
-
 package com.elifox.legocatalog.data
 
 import androidx.room.TypeConverter

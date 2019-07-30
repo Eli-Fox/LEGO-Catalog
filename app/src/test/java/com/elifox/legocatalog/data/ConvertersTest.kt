@@ -1,22 +1,16 @@
-
-
 package com.elifox.legocatalog.data
 
-import com.elifox.legocatalog.data.Converters
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.util.Calendar
-import java.util.Calendar.DAY_OF_MONTH
-import java.util.Calendar.MONTH
-import java.util.Calendar.SEPTEMBER
-import java.util.Calendar.YEAR
+import java.util.*
+import java.util.Calendar.*
 
 class ConvertersTest {
 
     private val cal = Calendar.getInstance().apply {
-        set(YEAR, 1998)
-        set(MONTH, SEPTEMBER)
-        set(DAY_OF_MONTH, 4)
+        set(YEAR, 2077)
+        set(MONTH, JULY)
+        set(DAY_OF_MONTH, 7)
     }
 
     @Test fun calendarToDatestamp() {

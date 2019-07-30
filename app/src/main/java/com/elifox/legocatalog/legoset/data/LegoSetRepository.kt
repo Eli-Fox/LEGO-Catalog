@@ -5,6 +5,7 @@ import androidx.lifecycle.distinctUntilChanged
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.elifox.legocatalog.data.resultLiveData
+import com.elifox.legocatalog.testing.OpenForTesting
 import kotlinx.coroutines.CoroutineScope
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -13,6 +14,7 @@ import javax.inject.Singleton
  * Repository module for handling data operations.
  */
 @Singleton
+@OpenForTesting
 class LegoSetRepository @Inject constructor(private val dao: LegoSetDao,
                                             private val legoSetRemoteDataSource: LegoSetRemoteDataSource) {
 

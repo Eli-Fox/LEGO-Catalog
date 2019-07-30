@@ -2,11 +2,13 @@ package com.elifox.legocatalog.legoset.data
 
 import com.elifox.legocatalog.api.BaseDataSource
 import com.elifox.legocatalog.api.LegoService
+import com.elifox.legocatalog.testing.OpenForTesting
 import javax.inject.Inject
 
 /**
  * Works with the Lego API to get data.
  */
+@OpenForTesting
 class LegoSetRemoteDataSource @Inject constructor(private val service: LegoService) : BaseDataSource() {
 
     suspend fun fetchSets(page: Int, pageSize: Int? = null, themeId: Int? = null)

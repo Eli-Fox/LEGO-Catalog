@@ -9,6 +9,8 @@ import com.elifox.legocatalog.legoset.data.LegoSetRemoteDataSource
 import com.elifox.legocatalog.legotheme.data.LegoThemeRemoteDataSource
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -54,6 +56,11 @@ class AppModule {
     @Singleton
     @Provides
     fun provideLegoThemeDao(db: AppDatabase) = db.legoThemeDao()
+
+    @CoroutineScropeIO
+    @Provides
+    fun provideCoroutineScopeIO() = CoroutineScope(Dispatchers.IO)
+
 
     private fun createRetrofit(
             okhttpClient: OkHttpClient,
