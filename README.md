@@ -27,14 +27,12 @@ There are two Gradle tasks for testing the project:
 * `connectedAndroidTest` - for running Espresso on a connected device
 * `test` - for running unit tests
 
-For more resources on learning Android development, visit the
-[Developer Guides](https://developer.android.com/guide/) at
-[developer.android.com](https://developer.android.com).
-
 Screenshots
 -----------
-TODO
-![Screenshot 1](screenshots/Screenshot1.png "Screenshot1")
+![LegoThemeFragment](screenshots/phone_legotheme.png "Browse Themes ")
+![LegoSetsFragment Grid](screenshots/phone_legosets_grid.png "Browse sets in grid view")
+![LegoSetsFragment List](screenshots/phone_legosets_list.png "Browse sets in list view")
+![LegoSetFragment](screenshots/phone_legoset.png "Lego set")
 
 Libraries Used
 --------------
@@ -87,7 +85,7 @@ Android Studio IDE setup
 For development, the latest version of Android Studio is required. The latest version can be
 downloaded from [here](https://developer.android.com/studio/).
 
-Sunflower uses [ktlint](https://ktlint.github.io/) to enforce Kotlin coding styles.
+App uses [ktlint](https://ktlint.github.io/) to enforce Kotlin coding styles.
 Here's how to configure it for use with Android Studio (instructions adapted
 from the ktlint [README](https://github.com/shyiko/ktlint/blob/master/README.md)):
 
@@ -103,7 +101,9 @@ from the ktlint [README](https://github.com/shyiko/ktlint/blob/master/README.md)
 
 License
 -------
-TODO
+Copyright 2019 Eli Fox.
+
+
 Licensed to the Apache Software Foundation (ASF) under one or more contributor
 license agreements.  See the NOTICE file distributed with this work for
 additional information regarding copyright ownership.  The ASF licenses this
