@@ -29,9 +29,9 @@ There are two Gradle tasks for testing the project:
 
 Screenshots
 -----------
+
 ![LegoThemeFragment](screenshots/phone_legotheme.png "Browse Themes ")
 ![LegoSetsFragment Grid](screenshots/phone_legosets_grid.png "Browse sets in grid view")
-![LegoSetsFragment List](screenshots/phone_legosets_list.png "Browse sets in list view")
 ![LegoSetFragment](screenshots/phone_legoset.png "Lego set")
 
 Libraries Used
