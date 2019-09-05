@@ -18,22 +18,22 @@ recommended [Guide to app architecture](https://developer.android.com/jetpack/do
 The application is written entirely in Kotlin.
 
 The application does network HTTP requests via Retrofit, OkHttp and GSON. Loaded data is saved to
-SQL based database Room, which serve as single source of truth and support offline mode.
+SQL based database Room, which serves as single source of truth and support offline mode.
 Paging library is used for data pagination online and offline.
 
 Kotlin Coroutines manage background threads with simplified code and reducing needs for callbacks.
-Coroutines and Kotlin transformation, collection functions are preferred over RxJava 2
-for simple client making network calls and transforming API data to UI model.
+Combination of Coroutines and Kotlin build in functions (transformation, collections) are preferred
+over RxJava 2.
 
-Work manager does synchronisation job using battery efficiently being compatible with Doze Mode.
+Work manager does synchronisation job being compatible with Doze Mode and using battery efficiently.
 Navigation component manages in-app navigation.
 
 Dagger 2 is used for dependency injection.
 
 Glide is used for image loading and Timber for logging.
 
-Stetho is used to empower debugging skills (like live Network API calls log,
-Database content overview, UI Hierarchy view, etc).
+Stetho is used to empower debugging skills (like Network calls log, Database content overview,
+UI Hierarchy view, etc).
 
 A sample app consist of 3 screens: List of LEGO® themes, list of sets and set details.
 
