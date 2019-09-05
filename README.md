@@ -10,12 +10,15 @@ or endorse this app.
 Introduction
 ------------
 
-The application uses MVVM and Repository patterns as a base of architecture following Google
-recommended [Guide to app architecture](https://developer.android.com/jetpack/docs/guide).
+The application uses Clean Architecture based on MVVM and Repository patterns. Implemented
+Architecture principles follow Google recommended [Guide to app architecture](https://developer.android.com/jetpack/docs/guide).
 
 ![Guide to app architecture](screenshots/guide-to-app-architecture.png "Guide to app architecture")
 
 The application is written entirely in Kotlin.
+
+Android Jetpack is used as an Architecture glue including but not limited to ViewModel, LiveData,
+Lifecycles, Navigation, Room and Data Binding. See a complete list in "Libraries used" section.
 
 The application does network HTTP requests via Retrofit, OkHttp and GSON. Loaded data is saved to
 SQL based database Room, which serves as single source of truth and support offline mode.
