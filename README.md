@@ -1,22 +1,41 @@
 LEGO® Catalog
 =========================
 
-A LEGO® Catalog app illustrating Android development best practices.
+A LEGO® Catalog app illustrating current Android Architecture state using Android development best
+practices.
 
-NOTE: LEGO® and the LEGO® logo are trademarks of the LEGO® Group, which does not sponsor, authorize or endorse this app.
-TODO
-
+NOTE: LEGO® and the LEGO® logo are trademarks of the LEGO® Group, which does not sponsor, authorize
+or endorse this app.
 
 Introduction
 ------------
 
-TODO
+The application uses MVVM and Repository patterns as a base of architecture following Google
+recommended [Guide to app architecture](https://developer.android.com/jetpack/docs/guide).
 
-Android Jetpack is a set of components, tools and guidance to make great Android apps. They bring
-together the existing Support Library and Architecture Components and arranges them into four
-categories:
+![Guide to app architecture](screenshots/guide-to-app-architecture.png "Guide to app architecture")
 
-![Android Jetpack](screenshots/jetpack_donut.png "Android Jetpack Components")
+The application is written entirely in Kotlin.
+
+The application does network HTTP requests via Retrofit, OkHttp and GSON. Loaded data is saved to
+SQL based database Room, which serve as single source of truth and support offline mode.
+Paging library is used for data pagination online and offline.
+
+Kotlin Coroutines manage background threads with simplified code and reducing needs for callbacks.
+Coroutines and Kotlin transformation, collection functions are preferred over RxJava 2
+for simple client making network calls and transforming API data to UI model.
+
+Work manager does synchronisation job using battery efficiently being compatible with Doze Mode.
+Navigation component manages in-app navigation.
+
+Dagger 2 is used for dependency injection.
+
+Glide is used for image loading and Timber for logging.
+
+Stetho is used to empower debugging skills (like live Network API calls log,
+Database content overview, UI Hierarchy view, etc).
+
+A sample app consist of 3 screens: List of LEGO® themes, list of sets and set details.
 
 Getting Started
 ---------------
@@ -36,7 +55,16 @@ Screenshots
 
 Libraries Used
 --------------
-TODO
+
+The application goal is to show case current Android Architecture state using out of box
+Android tools made by Google (Android Jetpack) and 3rd party community driven libraries.
+
+Android Jetpack is a set of components, tools and guidance to make great Android apps. They bring
+together the existing Support Library and Architecture Components and arranges them into four
+categories:
+
+![Android Jetpack](screenshots/jetpack_donut.png "Android Jetpack Components")
+
 * [Foundation][0] - Components for core system capabilities, Kotlin extensions and support for
   multidex and automated testing.
   * [AppCompat][1] - Degrade gracefully on older versions of Android.
@@ -49,17 +77,26 @@ TODO
   * [Lifecycles][12] - Create a UI that automatically responds to lifecycle events.
   * [LiveData][13] - Build data objects that notify views when the underlying database changes.
   * [Navigation][14] - Handle everything needed for in-app navigation.
-  * [Room][16] - Access your app's SQLite database with in-app objects and compile-time checks.
+  * [Room][16] - SQLite database with in-app objects and compile-time checks.
   * [ViewModel][17] - Store UI-related data that isn't destroyed on app rotations. Easily schedule
      asynchronous tasks for optimal execution.
   * [WorkManager][18] - Manage your Android background jobs.
-* [UI][30] - Details on why and how to use UI Components in your apps - together or separate
+  * [Paging][19] - Load and display small chunks of data at a time.
+* [UI][30] - Details on why and how to use UI Components in your apps - together or separate.
   * [Animations & Transitions][31] - Move widgets and transition between screens.
   * [Fragment][34] - A basic unit of composable UI.
   * [Layout][35] - Lay out widgets using different algorithms.
+  * [Material][36] - Material Components.
 * Third party
-  * [Glide][90] for image loading
-  * [Kotlin Coroutines][91] for managing background threads with simplified code and reducing needs for callbacks
+  * [Kotlin Coroutines][91] for managing background threads with simplified code
+     and reducing needs for callbacks.
+  * [Dagger 2][92] A fast dependency injector.
+  * [Retrofit 2][93] A configurable REST client.
+  * [OkHttp 3][94] A type-safe HTTP client.
+  * [GSON][95] A Json - Object converter using reflection.
+  * [Glide][90] Image loading.
+  * [Timber][96] A logger.
+  * [Stetho][97] Sophisticated debug bridge.
 
 [0]: https://developer.android.com/jetpack/components
 [1]: https://developer.android.com/topic/libraries/support-library/packages#v7-appcompat
@@ -73,12 +110,20 @@ TODO
 [16]: https://developer.android.com/topic/libraries/architecture/room
 [17]: https://developer.android.com/topic/libraries/architecture/viewmodel
 [18]: https://developer.android.com/topic/libraries/architecture/workmanager
+[19]: https://developer.android.com/topic/libraries/architecture/paging
 [30]: https://developer.android.com/guide/topics/ui
 [31]: https://developer.android.com/training/animation/
 [34]: https://developer.android.com/guide/components/fragments
 [35]: https://developer.android.com/guide/topics/ui/declaring-layout
+[36]: https://material.io/develop/android/docs/getting-started/
 [90]: https://bumptech.github.io/glide/
 [91]: https://kotlinlang.org/docs/reference/coroutines-overview.html
+[92]: https://dagger.dev/users-guide
+[93]: https://square.github.io/retrofit/
+[94]: https://square.github.io/okhttp/
+[95]: https://github.com/google/gson
+[96]: https://github.com/JakeWharton/timber
+[97]: http://facebook.github.io/stetho/
 
 Android Studio IDE setup
 ------------------------
@@ -101,8 +146,8 @@ from the ktlint [README](https://github.com/shyiko/ktlint/blob/master/README.md)
 
 License
 -------
-Copyright 2019 Eli Fox.
 
+Copyright 2019 Eli Fox.
 
 Licensed to the Apache Software Foundation (ASF) under one or more contributor
 license agreements.  See the NOTICE file distributed with this work for
