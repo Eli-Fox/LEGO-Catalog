@@ -4,7 +4,7 @@ LEGO® Catalog
 A LEGO® Catalog app illustrating current Android Architecture state using Android development best
 practices.
 
-To get started you can find project and Architecture overview [in the Medium article](https://medium.com/@eli.fox/android-architecture-starring-kotlin-coroutines-jetpack-mvvm-room-paging-retrofit-and-dagger-7749b2bae5f7?sk=9c5a7af2fbf5d4a04e72322bfb245489). 
+[To get started you can find project and Architecture overview in the Medium article](https://medium.com/@eli.fox/android-architecture-starring-kotlin-coroutines-jetpack-mvvm-room-paging-retrofit-and-dagger-7749b2bae5f7?sk=9c5a7af2fbf5d4a04e72322bfb245489). 
 
 NOTE: LEGO® and the LEGO® logo are trademarks of the LEGO® Group, which does not sponsor, authorize
 or endorse this app.
