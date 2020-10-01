@@ -15,9 +15,9 @@
     <string name="menu_item_share" translation_description="The label for the Share menu item">Share</string>
     <string name="number_of_parts">Number of parts: %d</string>
     <string name="year">Year: %d</string>
-    <string name="share_lego_set">Check out %s Lego set : %s</string>
+    <string name="share_lego_set">Check out %s LEGO set: %s</string>
 
     <!-- Accessibility -->
-    <string name="a11y_legoset_item_image">Picture of Lego Set</string>
+    <string name="a11y_legoset_item_image">Picture of LEGO Set</string>
 
 </resources>

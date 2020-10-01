@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Resources that do not require translation -->
+
+    <!-- Translatable resources -->
+    <string name="filter" translation_description="Common Filter">Filtro</string>
+    <string name="grid" translation_description="Common Filter">Ver en lista/en cuadrícula</string>
+    <string name="legothemes_title">Ver por temas</string>
+    <string name="legosets_title">Ver todos los sets</string>
+    <string name="legoset_details_title">Detalles del set</string>
+    <string name="navigation_drawer_header_content_description">Logo del menú de navegación</string>
+    <string name="santa_claus_quote">Papá Noel tomará en cuenta tu petición</string>
+    <string name="menu_item_share" translation_description="The label for the Share menu item">Compartir</string>
+    <string name="number_of_parts">Número de piezas: %d</string>
+    <string name="year">Año: %d</string>
+    <string name="share_lego_set">Mira este set de LEGO %s: %s</string>
+
+    <!-- Accessibility -->
+    <string name="a11y_legoset_item_image">Imagen del set de LEGO</string>
+
+</resources>
