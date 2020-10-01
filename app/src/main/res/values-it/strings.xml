@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="filter">Filtro</string>
+    <string name="legothemes_title">Esplora temi</string>
+    <string name="legosets_title">Esplora tutti i set</string>
+    <string name="santa_claus_quote">Babbo Natale considererà questa richiesta</string>
+    <string name="menu_item_share">Condividi</string>
+    <string name="number_of_parts">Numero di parti: %d</string>
+    <string name="year">Anno: %d</string>
+    <string name="share_lego_set">Guarda questo set LEGO %s: %s</string>
+    <string name="a11y_legoset_item_image">Immagine del set LEGO</string>
+    <string name="grid">Visualizza griglia o lista</string>
+    <string name="legoset_details_title">Dettagli set</string>
+    <string name="navigation_drawer_header_content_description">Logo del menù di navigazione</string>
+</resources>

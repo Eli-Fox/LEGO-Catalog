@@ -11,9 +11,9 @@
     <string name="menu_item_share" translation_description="The label for the Share menu item">Поделится</string>
     <string name="number_of_parts">Количество деталей: %d</string>
     <string name="year">Год: %d</string>
-    <string name="share_lego_set">Отличный %s Lego набор : %s</string>
+    <string name="share_lego_set">Отличный %s LEGO набор : %s</string>
 
     <!-- Accessibility -->
-    <string name="a11y_legoset_item_image">Изображение Lego набора</string>
+    <string name="a11y_legoset_item_image">Изображение LEGO набора</string>
 
 </resources>
